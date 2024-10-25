@@ -1,0 +1,6 @@
+@GlobalManagement_HostAddress = http://localhost:5191
+
+GET {{GlobalManagement_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
