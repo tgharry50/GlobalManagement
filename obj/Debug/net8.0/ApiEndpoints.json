@@ -1,1 +1,198 @@
-[]
+[
+  {
+    "ContainingType": "GlobalManagement.Controllers.LoginLogoutController.LoginLogoutController",
+    "Method": "Login",
+    "RelativePath": "access/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "GlobalManagement.Controllers.LoginLogoutController._dto.LoginDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GlobalManagement.Controllers.LoginLogoutController.LoginLogoutController",
+    "Method": "Logout",
+    "RelativePath": "access/logout",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "uuid",
+        "Type": "System.Guid",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GlobalManagement.Controllers.LoginLogoutController.sub_controller.Login",
+    "Method": "_Login",
+    "RelativePath": "login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "GlobalManagement.Controllers.LoginLogoutController._dto.LoginDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GlobalManagement.Controllers.LoginLogoutController.sub_controller.Logout",
+    "Method": "_Logout",
+    "RelativePath": "logout",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "uuid",
+        "Type": "System.Guid",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GlobalManagement.Controllers.UsersController.UserController",
+    "Method": "GetUsers",
+    "RelativePath": "users",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GlobalManagement.Controllers.UsersController.UserController",
+    "Method": "CreateUser",
+    "RelativePath": "users",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "GlobalManagement.Controllers.UsersController._dto.CreateUserdto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GlobalManagement.Controllers.UsersController.UserController",
+    "Method": "RemoveUser",
+    "RelativePath": "users",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "uuid",
+        "Type": "System.Guid",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GlobalManagement.Controllers.UsersController.UserController",
+    "Method": "GetUser",
+    "RelativePath": "users/{uuid}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "uuid",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GlobalManagement.Controllers.UsersController.UserController",
+    "Method": "UpdateUserActive",
+    "RelativePath": "users/active",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "uuid",
+        "Type": "System.Guid",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GlobalManagement.Controllers.UsersController.UserController",
+    "Method": "UpdateUserBasic",
+    "RelativePath": "users/basic",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "uuid",
+        "Type": "System.Guid",
+        "IsRequired": false
+      },
+      {
+        "Name": "dto",
+        "Type": "GlobalManagement.Controllers.UsersController._dto.UpdateUserBasicdto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GlobalManagement.Controllers.UsersController.UserController",
+    "Method": "ForceUpdateUserPassword",
+    "RelativePath": "users/force",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "uuid",
+        "Type": "System.Guid",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GlobalManagement.Controllers.UsersController.UserController",
+    "Method": "UpdateUserPassword",
+    "RelativePath": "users/password",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "uuid",
+        "Type": "System.Guid",
+        "IsRequired": false
+      },
+      {
+        "Name": "dto",
+        "Type": "GlobalManagement.Controllers.UsersController._dto.UpdateUserPassworddto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

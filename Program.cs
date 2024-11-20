@@ -1,4 +1,5 @@
 
+using GlobalManagement.AddinationalFunctions;
 using GlobalManagement.Database;
 using Microsoft.EntityFrameworkCore;
 
@@ -18,7 +19,7 @@ namespace GlobalManagement
             builder.Services.AddSwaggerGen();
             builder.Services.AddDbContext<GlobalDatabase>(o =>
             {
-                o.UseSqlServer(builder.Configuration.GetConnectionString("Remote"));
+                o.UseSqlServer(builder.Configuration.GetConnectionString("Development"));
             });
             builder.Services.AddCors(c =>
             {
@@ -41,7 +42,6 @@ namespace GlobalManagement
                 Console.WriteLine($"Production Enviroment Started: {DateTime.Now}\n");
                 Console.ForegroundColor = ConsoleColor.White;
             }
-            app.UseCors(opt => opt.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             app.UseAuthorization();
 
 

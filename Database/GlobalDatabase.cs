@@ -1,9 +1,14 @@
 ﻿using GlobalManagement.AddinationalFunctions;
+using GlobalManagement.Logging;
 using GlobalManagement.Models._DefaultModels._Roles._ControlReportRoles;
 using GlobalManagement.Models._DefaultModels._Roles._GlobalRoles;
 using GlobalManagement.Models._DefaultModels._User;
 using GlobalManagement.Models.AppModel;
 using GlobalManagement.Models.AppModel._App;
+using GlobalManagement.Models.Groups;
+using GlobalManagement.Models.Groups._Default;
+using GlobalManagement.Models.Groups.Members;
+using GlobalManagement.Models.Groups.Permissions;
 using GlobalManagement.Models.Permissions;
 using Microsoft.EntityFrameworkCore;
 
@@ -29,28 +34,28 @@ namespace GlobalManagement.Database
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //Application
-            App global_pregen = new App() { Id = 1, UUID = Guid.NewGuid(), Name = "GlobalApp", Description = "Application used to manage other applications and permission" };
-            App Control_pregen = new App() { Id = 2, UUID = Guid.NewGuid(), Name = "ControlReport", Description = "Application used to manage reference, ecr, deviation" };
+            App globalPregen = new App { Id = 1, Uuid = Guid.NewGuid(), Name = "GlobalApp", Description = "Application used to manage other applications and permission", IsActive = true, Address = "10.35.92.163:3001", CreatedAt = DateTime.Now };
+            App controlPregen = new App() { Id = 2, Uuid = Guid.NewGuid(), Name = "ControlReport", Description = "Application used to manage reference, ecr, deviation", IsActive = true, Address = "10.35.92.163:2999", CreatedAt = DateTime.Now };
 
             modelBuilder.Entity<App>(entity =>
             {
                 entity.HasKey(entity => entity.Id);
-                entity.HasAlternateKey(entity => entity.UUID);
+                entity.HasAlternateKey(entity => entity.Uuid);
                 entity.Property(entity => entity.Name)
                 .IsRequired()
                 .HasColumnName("Application Name");
                 entity.Property(entity => entity.Description)
                 .IsRequired()
                 .HasColumnName("Application Description");
-                entity.HasData(global_pregen);
-                entity.HasData(Control_pregen);
+                entity.HasData(globalPregen);
+                entity.HasData(controlPregen);
             });
             // Basic Admin, startup user
             Hashing hashing = new Hashing();
-            User admin = new User()
+            User admin = new()
             {
                 Id = 1,
-                UUID = Guid.NewGuid(),
+                Uuid = Guid.NewGuid(),
                 UserName = "admin",
                 Password = hashing.Hash("1234QWERasdf"),
                 FullName = "admin admin",
@@ -65,7 +70,7 @@ namespace GlobalManagement.Database
             modelBuilder.Entity<User>(entity =>
             {
                 entity.HasKey(entity => entity.Id);
-                entity.HasAlternateKey(entity => entity.UUID);
+                entity.HasAlternateKey(entity => entity.Uuid);
                 entity.Property(entity => entity.UserName).IsRequired().HasMaxLength(32);
                 entity.Property(entity => entity.Password).IsRequired();
                 entity.Property(e => e.FirstName).IsRequired().HasMaxLength(48);
@@ -79,47 +84,47 @@ namespace GlobalManagement.Database
                 entity.HasData(admin);
             });
             // App Owners
-            modelBuilder.Entity<App_Owners>(e =>
+            modelBuilder.Entity<AppOwners>(e =>
             {
                 e.HasKey(e => e.Id);
-                e.HasAlternateKey(e => e.UUID);
-                e.Property(e => e.App_UUID).IsRequired();
-                e.Property(e => e.User_UUID).IsRequired();
-                e.HasData(new App_Owners() { Id = 1, UUID = Guid.NewGuid(), User_UUID = admin.UUID, App_UUID = global_pregen.UUID});
-                e.HasData(new App_Owners() { Id = 2, UUID = Guid.NewGuid(), User_UUID = Control_pregen.UUID, App_UUID = Control_pregen.UUID });
+                e.HasAlternateKey(e => e.Uuid);
+                e.Property(e => e.AppUuid).IsRequired();
+                e.Property(e => e.UserUuid).IsRequired();
+                e.HasData(new AppOwners() { Id = 1, Uuid = Guid.NewGuid(), UserUuid = admin.Uuid, AppUuid = globalPregen.Uuid });
+                e.HasData(new AppOwners() { Id = 2, Uuid = Guid.NewGuid(), UserUuid = controlPregen.Uuid, AppUuid = controlPregen.Uuid });
 
             });
             // App options
-            modelBuilder.Entity<App_Options>(e =>
+            modelBuilder.Entity<AppOptions>(e =>
             {
                 e.HasKey(e => e.Id);
-                e.HasAlternateKey(e => e.UUID);
-                e.Property(e => e.App_UUID).IsRequired();
-                e.HasData(new App_Options() { Id = 1, UUID = Guid.NewGuid(), App_UUID = global_pregen.UUID });
-                e.HasData(new App_Options() { Id = 2, UUID = Guid.NewGuid(), App_UUID = Control_pregen.UUID });
+                e.HasAlternateKey(e => e.Uuid);
+                e.Property(e => e.AppUuid).IsRequired();
+                e.HasData(new AppOptions() { Id = 1, Uuid = Guid.NewGuid(), AppUuid = globalPregen.Uuid });
+                e.HasData(new AppOptions() { Id = 2, Uuid = Guid.NewGuid(), AppUuid = controlPregen.Uuid });
             });
             Guid gl = Guid.NewGuid();
             // First run global app
-            modelBuilder.Entity<_DefaultGlobalRole>(e =>
+            modelBuilder.Entity<DefaultGlobalRole>(e =>
             {
                 e.HasKey(e => e.Id);
-                e.HasAlternateKey(e => e.UUID);
-                e.Property(e => e.App_Name).IsRequired();
-                e.Property(e => e.App_UUID).IsRequired();
-                e.Property(e => e.Role_Name).IsRequired();
+                e.HasAlternateKey(e => e.Uuid);
+                e.Property(e => e.AppName).IsRequired();
+                e.Property(e => e.AppUuid).IsRequired();
+                e.Property(e => e.RoleName).IsRequired();
                 e.Property(e => e.CanBeEdited).IsRequired();
                 e.Property(e => e.CreateUser).IsRequired();
                 e.Property(e => e.UpdateUser).IsRequired();
                 e.Property(e => e.DeleteUser).IsRequired();
                 e.Property(e => e.CreateCustomRole).IsRequired();
                 e.Property(e => e.CanAccessGlobal).IsRequired();
-                e.HasData(new _DefaultGlobalRole()
+                e.HasData(new DefaultGlobalRole()
                 {
                     Id = 1,
-                    UUID = gl,
-                    App_Name = global_pregen.Name,
-                    App_UUID = global_pregen.UUID,
-                    Role_Name = "Administrator",
+                    Uuid = gl,
+                    AppName = globalPregen.Name,
+                    AppUuid = globalPregen.Uuid,
+                    RoleName = "Administrator",
                     CanAccessGlobal = true,
                     CanBeEdited = false,
                     CreateUser = true,
@@ -127,13 +132,13 @@ namespace GlobalManagement.Database
                     DeleteUser = true,
                     CreateCustomRole = true,
                 });
-                e.HasData(new _DefaultGlobalRole()
+                e.HasData(new DefaultGlobalRole()
                 {
                     Id = 2,
-                    UUID = Guid.NewGuid(),
-                    App_Name = global_pregen.Name,
-                    App_UUID = global_pregen.UUID,
-                    Role_Name = "User",
+                    Uuid = Guid.NewGuid(),
+                    AppName = globalPregen.Name,
+                    AppUuid = globalPregen.Uuid,
+                    RoleName = "User",
                     CanAccessGlobal = false,
                     CanBeEdited = false,
                     CreateUser = false,
@@ -144,11 +149,11 @@ namespace GlobalManagement.Database
             });
             Guid cr = Guid.NewGuid();
             // Control Report 
-            modelBuilder.Entity<_DefaultControlReportRole>(e =>
+            modelBuilder.Entity<DefaultControlReportRole>(e =>
             {
                 e.HasKey(e => e.Id);
-                e.HasKey(e => e.UUID);
-                e.Property(e=>e.Role_Name).IsRequired();
+                e.HasAlternateKey(e => e.UUID);
+                e.Property(e => e.RoleName).IsRequired();
                 e.Property(e => e.CanBeEdited).IsRequired();
                 e.Property(e => e.HasAllPrivelage).IsRequired();
                 e.Property(e => e.CanUseApp).IsRequired();
@@ -169,22 +174,22 @@ namespace GlobalManagement.Database
                 e.Property(e => e.CanDeleteTask).IsRequired();
                 e.Property(e => e.CanUpdateTask).IsRequired();
                 // ecr
-                e.Property(e => e.CanCreateECR).IsRequired();
-                e.Property(e => e.CanReadECR).IsRequired();
-                e.Property(e => e.CanDeleteECR).IsRequired();
-                e.Property(e => e.CanUpdateECR).IsRequired();
+                e.Property(e => e.CanCreateEcr).IsRequired();
+                e.Property(e => e.CanReadEcr).IsRequired();
+                e.Property(e => e.CanDeleteEcr).IsRequired();
+                e.Property(e => e.CanUpdateEcr).IsRequired();
                 // deviation
                 e.Property(e => e.CanCreateGroup).IsRequired();
                 e.Property(e => e.CanReadGroup).IsRequired();
                 e.Property(e => e.CanUpdateGroup).IsRequired();
                 e.Property(e => e.CanDeleteGroup).IsRequired();
-                e.HasData(new _DefaultControlReportRole()
+                e.HasData(new DefaultControlReportRole()
                 {
                     Id = 1,
                     UUID = cr,
-                    App_Name = Control_pregen.Name,
-                    App_UUID = Control_pregen.UUID,
-                    Role_Name = "Administrator",
+                    AppName = controlPregen.Name,
+                    AppUuid = controlPregen.Uuid,
+                    RoleName = "Administrator",
                     CanBeEdited = false,
                     HasAllPrivelage = true,
                     CanUseApp = true,
@@ -200,10 +205,10 @@ namespace GlobalManagement.Database
                     CanReadTask = true,
                     CanUpdateTask = true,
                     CanDeleteTask = true,
-                    CanCreateECR = true,
-                    CanReadECR = true,
-                    CanUpdateECR = true,
-                    CanDeleteECR = true,
+                    CanCreateEcr = true,
+                    CanReadEcr = true,
+                    CanUpdateEcr = true,
+                    CanDeleteEcr = true,
                     CanCreateDeviation = true,
                     CanReadDeviation = true,
                     CanUpdateDeviation = true,
@@ -211,14 +216,14 @@ namespace GlobalManagement.Database
                     CanReadGroup = true,
                     CanUpdateGroup = true,
                     CanDeleteGroup = true,
-                }); 
-                e.HasData(new _DefaultControlReportRole()
+                });
+                e.HasData(new DefaultControlReportRole()
                 {
                     Id = 2,
                     UUID = Guid.NewGuid(),
-                    Role_Name = "User",
-                    App_Name = Control_pregen.Name,
-                    App_UUID = Control_pregen.UUID,
+                    RoleName = "User",
+                    AppName = controlPregen.Name,
+                    AppUuid = controlPregen.Uuid,
                     CanBeEdited = false,
                     HasAllPrivelage = false,
                     CanUseApp = true,
@@ -234,10 +239,10 @@ namespace GlobalManagement.Database
                     CanReadTask = true,
                     CanUpdateTask = false,
                     CanDeleteTask = false,
-                    CanCreateECR = false,
-                    CanReadECR = true,
-                    CanUpdateECR = false,
-                    CanDeleteECR = false,
+                    CanCreateEcr = false,
+                    CanReadEcr = true,
+                    CanUpdateEcr = false,
+                    CanDeleteEcr = false,
                     CanCreateDeviation = false,
                     CanReadDeviation = true,
                     CanUpdateDeviation = false,
@@ -252,42 +257,112 @@ namespace GlobalManagement.Database
             {
                 e.HasKey(e => e.Id);
                 e.HasAlternateKey(e => e.UUID);
-                e.Property(e => e.User_UUID).IsRequired();
-                e.Property(e => e.App_Name).IsRequired();
-                e.Property(e => e.App_UUID).IsRequired();
+                e.Property(e => e.UserUuid).IsRequired();
+                e.Property(e => e.AppName).IsRequired();
+                e.Property(e => e.AppUuid).IsRequired();
                 e.Property(e => e.Role).IsRequired();
-                e.Property(e => e.Role_UUID).IsRequired();
+                e.Property(e => e.RoleUuid).IsRequired();
                 e.HasData(new PermissionModel()
                 {
                     Id = 1,
                     UUID = Guid.NewGuid(),
-                    User_UUID = admin.UUID,
-                    App_Name = global_pregen.Name,
-                    App_UUID = global_pregen.UUID,
+                    UserUuid = admin.Uuid,
+                    AppName = globalPregen.Name,
+                    AppUuid = globalPregen.Uuid,
                     Role = "Administrator",
-                    Role_UUID = gl
+                    RoleUuid = gl,
+                    CreatedAt = DateTime.Now
                 });
                 e.HasData(new PermissionModel()
                 {
                     Id = 2,
                     UUID = Guid.NewGuid(),
-                    User_UUID = admin.UUID,
-                    App_Name = Control_pregen.Name,
-                    App_UUID = Control_pregen.UUID,
+                    UserUuid = admin.Uuid,
+                    AppName = controlPregen.Name,
+                    AppUuid = controlPregen.Uuid,
                     Role = "Administrator",
-                    Role_UUID = cr
+                    RoleUuid = cr,
+                    CreatedAt = DateTime.Now
                 });
+            });
+            modelBuilder.Entity<_Log_Model>(e =>
+            {
+                e.HasKey(e => e.Id);
+                e.HasAlternateKey(e => e.Uuid);
+                e.Property(e => e.Class).IsRequired();
+                e.Property(e => e.Message).IsRequired();
+                e.Property(e => e.End).IsRequired();
+            });
+            modelBuilder.Entity<GroupModel>(e =>
+            {
+                e.HasKey(e => e.Id);
+                e.HasAlternateKey(e => e.Uuid);
+                e.Property(e => e.Name).IsRequired();
+                e.Property(e => e.Description).IsRequired();
+                e.Property(e => e.Hala).IsRequired();
+                e.Property(e => e.Section).IsRequired();
+                e.Property(e => e.IsActive).IsRequired();
+                e.Property(e => e.CreatedAt).IsRequired();
+            });
+            modelBuilder.Entity<GroupMember>(e =>
+            {
+                e.HasKey(e => e.Id);
+                e.HasAlternateKey(e => e.Uuid);
+                e.Property(e => e.GroupName);
+                e.Property(e => e.GroupUUID);
+                e.Property(e => e.Username);
+                e.Property(e => e.UserGuid);
+                e.Property(e => e.Role);
+                e.Property(e => e.RoleGuid);
+                e.Property(e => e.IsActive);
+                e.Property(e => e.CreatedAt);
+            });
+            modelBuilder.Entity<GroupPermissions>(e =>
+            {
+                e.HasKey(e => e.Id);
+                e.HasAlternateKey(e => e.Uuid);
+                e.Property(e => e.GroupName);
+                e.Property(e => e.GroupUuid);
+                e.Property(e => e.UsersCanAccessGlobalApp);
+                e.Property(e => e.UsersCanAccessReferenceHub);
+            });
+            modelBuilder.Entity<GroupRoleModel>(e =>
+            {
+                e.HasKey(e => e.Id);
+                e.HasAlternateKey(e => e.Uuid);
+                e.Property(e => e.GroupName);
+                e.Property(e => e.GroupUuid);
+                e.Property(e => e.RoleName);
+                e.Property(e => e.IsAdmin);
+                e.Property(e => e.CanModifyGroup);
+                e.Property(e => e.CanRemoveGroup);
+                e.Property(e => e.CanAddRoles);
+                e.Property(e => e.CanModifyRoles);
+                e.Property(e => e.CanRemoveRoles);
+                e.Property(e => e.IsRoleRemovable);
+                e.Property(e => e.CanAddUser);
+                e.Property(e => e.CanRemoveUser);
+                e.Property(e => e.CanModifyUser);
+                e.Property(e => e.CreatedAt);
             });
         }
         // Applications
         public DbSet<App> Application { get; set; } // Application
-        public DbSet<App_Options> ApplicationOptions { get; set; }
-        public DbSet<App_Owners> ApplicationOwner { get; set; }
+        public DbSet<AppOptions> ApplicationOptions { get; set; }
+        public DbSet<AppOwners> ApplicationOwner { get; set; }
         // Users
         public DbSet<User> Users { get; set; }
         public DbSet<PermissionModel> ApplicationPermissions { get; set; }
         // Permission Models
-        public DbSet<_DefaultGlobalRole> GlobalPermissions { get; set; }
-        public DbSet<_DefaultControlReportRole> ControlReportPermissions { get; set; }
+        public DbSet<DefaultGlobalRole> GlobalPermissions { get; set; }
+        public DbSet<DefaultControlReportRole> ControlReportPermissions { get; set; }
+        // Groups
+        public DbSet<GroupModel> Groups { get; set; }
+        public DbSet<GroupMember> GroupMembers { get; set; }
+        public DbSet<GroupPermissions> GroupPermissions { get; set; }
+        public DbSet<GroupRoleModel> GroupRole { get; set; }
+        // Logger
+        public DbSet<_Log_Model> Logs { get; set; }
     }
 }
+;

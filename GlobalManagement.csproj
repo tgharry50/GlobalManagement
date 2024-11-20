@@ -14,7 +14,24 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.10">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controllers\IndexController\sub_controller\" />
+    <Folder Include="Controllers\IndexController\_dto\" />
+    <Folder Include="Controllers\OptionsController\" />
+    <Folder Include="Controllers\PermissionsController\" />
+    <Folder Include="Migrations\" />
+    <Folder Include="Models\MailService\_DefaultControlReportMail\_ControlReportMail\" />
+    <Folder Include="Models\MailService\_DefaultGlobalAppMail\" />
+    <Folder Include="Models\MailService\_DefaultGlobalAppMail\_GlobalAppMail\" />
+    <Folder Include="Middleware\" />
+    <Folder Include="Log\" />
   </ItemGroup>
 
 </Project>

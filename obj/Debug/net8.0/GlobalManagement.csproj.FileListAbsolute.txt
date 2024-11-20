@@ -141,3 +141,9 @@ C:\Users\a0h70032\source\repos\GlobalManagement\GlobalManagement\bin\Debug\net8.
 C:\Users\a0h70032\source\repos\GlobalManagement\GlobalManagement\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\a0h70032\source\repos\GlobalManagement\GlobalManagement\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\a0h70032\source\repos\GlobalManagement\GlobalManagement\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\a0h70032\source\repos\GlobalManagement\GlobalManagement\obj\Debug\net8.0\GlobalManagement.sourcelink.json
+C:\Users\a0h70032\source\repos\GlobalManagement\GlobalManagement\bin\Debug\net8.0\GlobalAppFront\.eslintrc-auto-import.json
+C:\Users\a0h70032\source\repos\GlobalManagement\GlobalManagement\bin\Debug\net8.0\GlobalAppFront\package-lock.json
+C:\Users\a0h70032\source\repos\GlobalManagement\GlobalManagement\bin\Debug\net8.0\GlobalAppFront\package.json
+C:\Users\a0h70032\source\repos\GlobalManagement\GlobalManagement\bin\Debug\net8.0\GlobalAppFront\tsconfig.json
+C:\Users\a0h70032\source\repos\GlobalManagement\GlobalManagement\bin\Debug\net8.0\GlobalAppFront\tsconfig.node.json

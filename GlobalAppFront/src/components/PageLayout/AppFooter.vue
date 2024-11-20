@@ -1,11 +1,9 @@
 <template>
-  <v-footer height="40" app>
-    
-  </v-footer>
+  <v-footer app height="40" />
 </template>
 
 <script setup lang="ts">
-  
+
 </script>
 
 <style scoped>

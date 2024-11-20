@@ -22,6 +22,38 @@ namespace GlobalManagement.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("GlobalManagement.Logging._Log_Model", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Class")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<TimeSpan>("End")
+                        .HasColumnType("time");
+
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("Uuid")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasAlternateKey("Uuid");
+
+                    b.ToTable("Logs");
+                });
+
             modelBuilder.Entity("GlobalManagement.Models.AppModel.App", b =>
                 {
                     b.Property<int>("Id")
@@ -30,22 +62,35 @@ namespace GlobalManagement.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("Application Description");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("Application Name");
 
-                    b.Property<Guid>("UUID")
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("Uuid")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
-                    b.HasAlternateKey("UUID");
+                    b.HasAlternateKey("Uuid");
 
                     b.ToTable("Application");
 
@@ -53,20 +98,28 @@ namespace GlobalManagement.Migrations
                         new
                         {
                             Id = 1,
+                            Address = "10.35.92.163:3001",
+                            CreatedAt = new DateTime(2024, 11, 19, 8, 46, 28, 479, DateTimeKind.Local).AddTicks(4118),
                             Description = "Application used to manage other applications and permission",
+                            IsActive = true,
                             Name = "GlobalApp",
-                            UUID = new Guid("e1460990-542d-4142-8904-3c10d6a9d6e8")
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Uuid = new Guid("e347b87d-f522-43b4-8d5d-6daee67ff31a")
                         },
                         new
                         {
                             Id = 2,
+                            Address = "10.35.92.163:2999",
+                            CreatedAt = new DateTime(2024, 11, 19, 8, 46, 28, 479, DateTimeKind.Local).AddTicks(4179),
                             Description = "Application used to manage reference, ecr, deviation",
+                            IsActive = true,
                             Name = "ControlReport",
-                            UUID = new Guid("71c1b86a-9a7b-49c3-811d-1663f52ef980")
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Uuid = new Guid("45168948-edf8-441e-9e41-02c568774edc")
                         });
                 });
 
-            modelBuilder.Entity("GlobalManagement.Models.AppModel._App.App_Options", b =>
+            modelBuilder.Entity("GlobalManagement.Models.AppModel._App.AppOptions", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -74,15 +127,15 @@ namespace GlobalManagement.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<Guid>("App_UUID")
+                    b.Property<Guid>("AppUuid")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("UUID")
+                    b.Property<Guid>("Uuid")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
-                    b.HasAlternateKey("UUID");
+                    b.HasAlternateKey("Uuid");
 
                     b.ToTable("ApplicationOptions");
 
@@ -90,18 +143,18 @@ namespace GlobalManagement.Migrations
                         new
                         {
                             Id = 1,
-                            App_UUID = new Guid("e1460990-542d-4142-8904-3c10d6a9d6e8"),
-                            UUID = new Guid("33da1720-c465-4da2-8fa7-36705e495402")
+                            AppUuid = new Guid("e347b87d-f522-43b4-8d5d-6daee67ff31a"),
+                            Uuid = new Guid("50e4211b-be4c-469a-afe6-897ea64d06d9")
                         },
                         new
                         {
                             Id = 2,
-                            App_UUID = new Guid("71c1b86a-9a7b-49c3-811d-1663f52ef980"),
-                            UUID = new Guid("fd2093b0-4123-4778-932b-4d2599c32a1c")
+                            AppUuid = new Guid("45168948-edf8-441e-9e41-02c568774edc"),
+                            Uuid = new Guid("0020daac-5de9-4436-8cf4-4f16cda9fae6")
                         });
                 });
 
-            modelBuilder.Entity("GlobalManagement.Models.AppModel._App.App_Owners", b =>
+            modelBuilder.Entity("GlobalManagement.Models.AppModel._App.AppOwners", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -109,18 +162,18 @@ namespace GlobalManagement.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<Guid>("App_UUID")
+                    b.Property<Guid>("AppUuid")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("UUID")
+                    b.Property<Guid>("UserUuid")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("User_UUID")
+                    b.Property<Guid>("Uuid")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
-                    b.HasAlternateKey("UUID");
+                    b.HasAlternateKey("Uuid");
 
                     b.ToTable("ApplicationOwner");
 
@@ -128,17 +181,204 @@ namespace GlobalManagement.Migrations
                         new
                         {
                             Id = 1,
-                            App_UUID = new Guid("e1460990-542d-4142-8904-3c10d6a9d6e8"),
-                            UUID = new Guid("337c6fbe-5e02-4a53-847a-37c0cb9bf298"),
-                            User_UUID = new Guid("fc1d498c-746d-4407-b004-394e03756c04")
+                            AppUuid = new Guid("e347b87d-f522-43b4-8d5d-6daee67ff31a"),
+                            UserUuid = new Guid("96572ac8-0edf-476d-a3a4-944bd4cc2d4c"),
+                            Uuid = new Guid("c6704fb7-d3d7-4b49-b50f-122d33dca062")
                         },
                         new
                         {
                             Id = 2,
-                            App_UUID = new Guid("71c1b86a-9a7b-49c3-811d-1663f52ef980"),
-                            UUID = new Guid("30eb0af9-9724-477c-beb3-43e5d236484a"),
-                            User_UUID = new Guid("71c1b86a-9a7b-49c3-811d-1663f52ef980")
+                            AppUuid = new Guid("45168948-edf8-441e-9e41-02c568774edc"),
+                            UserUuid = new Guid("45168948-edf8-441e-9e41-02c568774edc"),
+                            Uuid = new Guid("0e765498-b807-4550-98ee-d39f4274bf83")
                         });
+                });
+
+            modelBuilder.Entity("GlobalManagement.Models.Groups.GroupModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Hala")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Section")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdateAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("Uuid")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasAlternateKey("Uuid");
+
+                    b.ToTable("Groups");
+                });
+
+            modelBuilder.Entity("GlobalManagement.Models.Groups.Members.GroupMember", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("GroupName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("GroupUUID")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Role")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("RoleGuid")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("UserGuid")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("Uuid")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasAlternateKey("Uuid");
+
+                    b.ToTable("GroupMembers");
+                });
+
+            modelBuilder.Entity("GlobalManagement.Models.Groups.Permissions.GroupPermissions", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("GroupName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("GroupUuid")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("UsersCanAccessGlobalApp")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("UsersCanAccessReferenceHub")
+                        .HasColumnType("bit");
+
+                    b.Property<Guid>("Uuid")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasAlternateKey("Uuid");
+
+                    b.ToTable("GroupPermissions");
+                });
+
+            modelBuilder.Entity("GlobalManagement.Models.Groups._Default.GroupRoleModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("CanAddRoles")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("CanAddUser")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("CanModifyGroup")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("CanModifyRoles")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("CanModifyUser")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("CanRemoveGroup")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("CanRemoveRoles")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("CanRemoveUser")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("GroupName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("GroupUuid")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("IsAdmin")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsRoleRemovable")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("RoleName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("Uuid")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasAlternateKey("Uuid");
+
+                    b.ToTable("GroupRole");
                 });
 
             modelBuilder.Entity("GlobalManagement.Models.Permissions.PermissionModel", b =>
@@ -149,24 +389,30 @@ namespace GlobalManagement.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("App_Name")
+                    b.Property<string>("AppName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("App_UUID")
+                    b.Property<Guid>("AppUuid")
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Role")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("Role_UUID")
+                    b.Property<Guid>("RoleUuid")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("UUID")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("User_UUID")
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("UserUuid")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
@@ -179,36 +425,42 @@ namespace GlobalManagement.Migrations
                         new
                         {
                             Id = 1,
-                            App_Name = "GlobalApp",
-                            App_UUID = new Guid("e1460990-542d-4142-8904-3c10d6a9d6e8"),
+                            AppName = "GlobalApp",
+                            AppUuid = new Guid("e347b87d-f522-43b4-8d5d-6daee67ff31a"),
+                            CreatedAt = new DateTime(2024, 11, 19, 8, 46, 28, 618, DateTimeKind.Local).AddTicks(811),
                             Role = "Administrator",
-                            Role_UUID = new Guid("13865aae-9987-43f9-96d7-0f5b92c67ba9"),
-                            UUID = new Guid("6532f398-fcf2-4c2e-8004-7d25a86161c4"),
-                            User_UUID = new Guid("fc1d498c-746d-4407-b004-394e03756c04")
+                            RoleUuid = new Guid("6be1dc71-52e3-427e-8b03-e6326f968841"),
+                            UUID = new Guid("d5b2beb6-5947-4cc5-9ae6-7d68511b22b9"),
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            UserUuid = new Guid("96572ac8-0edf-476d-a3a4-944bd4cc2d4c")
                         },
                         new
                         {
                             Id = 2,
-                            App_Name = "ControlReport",
-                            App_UUID = new Guid("71c1b86a-9a7b-49c3-811d-1663f52ef980"),
+                            AppName = "ControlReport",
+                            AppUuid = new Guid("45168948-edf8-441e-9e41-02c568774edc"),
+                            CreatedAt = new DateTime(2024, 11, 19, 8, 46, 28, 618, DateTimeKind.Local).AddTicks(891),
                             Role = "Administrator",
-                            Role_UUID = new Guid("f57c5777-e6b3-417d-8358-f38d062a3054"),
-                            UUID = new Guid("3a059cc5-2fa7-45e7-a8de-d1bde11b21bf"),
-                            User_UUID = new Guid("fc1d498c-746d-4407-b004-394e03756c04")
+                            RoleUuid = new Guid("505cf2c9-696d-4ac0-8524-a9f9551d4638"),
+                            UUID = new Guid("1b7d33ea-8357-42c0-8edb-284750860f02"),
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            UserUuid = new Guid("96572ac8-0edf-476d-a3a4-944bd4cc2d4c")
                         });
                 });
 
-            modelBuilder.Entity("GlobalManagement.Models._DefaultModels._Roles._ControlReportRoles._DefaultControlReportRole", b =>
+            modelBuilder.Entity("GlobalManagement.Models._DefaultModels._Roles._ControlReportRoles.DefaultControlReportRole", b =>
                 {
-                    b.Property<Guid>("UUID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
 
-                    b.Property<string>("App_Name")
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("AppName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("App_UUID")
+                    b.Property<Guid>("AppUuid")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<bool>("CanBeEdited")
@@ -217,7 +469,7 @@ namespace GlobalManagement.Migrations
                     b.Property<bool>("CanCreateDeviation")
                         .HasColumnType("bit");
 
-                    b.Property<bool>("CanCreateECR")
+                    b.Property<bool>("CanCreateEcr")
                         .HasColumnType("bit");
 
                     b.Property<bool>("CanCreateGroup")
@@ -235,7 +487,7 @@ namespace GlobalManagement.Migrations
                     b.Property<bool>("CanDeleteDeviation")
                         .HasColumnType("bit");
 
-                    b.Property<bool>("CanDeleteECR")
+                    b.Property<bool>("CanDeleteEcr")
                         .HasColumnType("bit");
 
                     b.Property<bool>("CanDeleteGroup")
@@ -253,7 +505,7 @@ namespace GlobalManagement.Migrations
                     b.Property<bool>("CanReadDeviation")
                         .HasColumnType("bit");
 
-                    b.Property<bool>("CanReadECR")
+                    b.Property<bool>("CanReadEcr")
                         .HasColumnType("bit");
 
                     b.Property<bool>("CanReadGroup")
@@ -271,7 +523,7 @@ namespace GlobalManagement.Migrations
                     b.Property<bool>("CanUpdateDeviation")
                         .HasColumnType("bit");
 
-                    b.Property<bool>("CanUpdateECR")
+                    b.Property<bool>("CanUpdateEcr")
                         .HasColumnType("bit");
 
                     b.Property<bool>("CanUpdateGroup")
@@ -292,94 +544,93 @@ namespace GlobalManagement.Migrations
                     b.Property<bool>("HasAllPrivelage")
                         .HasColumnType("bit");
 
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Role_Name")
+                    b.Property<string>("RoleName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("UUID");
+                    b.Property<Guid>("UUID")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasAlternateKey("UUID");
 
                     b.ToTable("ControlReportPermissions");
 
                     b.HasData(
                         new
                         {
-                            UUID = new Guid("f57c5777-e6b3-417d-8358-f38d062a3054"),
-                            App_Name = "ControlReport",
-                            App_UUID = new Guid("71c1b86a-9a7b-49c3-811d-1663f52ef980"),
+                            Id = 1,
+                            AppName = "ControlReport",
+                            AppUuid = new Guid("45168948-edf8-441e-9e41-02c568774edc"),
                             CanBeEdited = false,
                             CanCreateDeviation = true,
-                            CanCreateECR = true,
+                            CanCreateEcr = true,
                             CanCreateGroup = true,
                             CanCreateIntervention = true,
                             CanCreateReference = true,
                             CanCreateTask = true,
                             CanDeleteDeviation = false,
-                            CanDeleteECR = true,
+                            CanDeleteEcr = true,
                             CanDeleteGroup = true,
                             CanDeleteIntervention = true,
                             CanDeleteReference = true,
                             CanDeleteTask = true,
                             CanReadDeviation = true,
-                            CanReadECR = true,
+                            CanReadEcr = true,
                             CanReadGroup = true,
                             CanReadIntervention = true,
                             CanReadReference = true,
                             CanReadTask = true,
                             CanUpdateDeviation = true,
-                            CanUpdateECR = true,
+                            CanUpdateEcr = true,
                             CanUpdateGroup = true,
                             CanUpdateIntervention = true,
                             CanUpdateReference = true,
                             CanUpdateTask = true,
                             CanUseApp = true,
                             HasAllPrivelage = true,
-                            Id = 1,
-                            Role_Name = "Administrator"
+                            RoleName = "Administrator",
+                            UUID = new Guid("505cf2c9-696d-4ac0-8524-a9f9551d4638")
                         },
                         new
                         {
-                            UUID = new Guid("397ede05-aaf9-4cfc-93ed-4a098fd8ae53"),
-                            App_Name = "ControlReport",
-                            App_UUID = new Guid("71c1b86a-9a7b-49c3-811d-1663f52ef980"),
+                            Id = 2,
+                            AppName = "ControlReport",
+                            AppUuid = new Guid("45168948-edf8-441e-9e41-02c568774edc"),
                             CanBeEdited = false,
                             CanCreateDeviation = false,
-                            CanCreateECR = false,
+                            CanCreateEcr = false,
                             CanCreateGroup = false,
                             CanCreateIntervention = false,
                             CanCreateReference = false,
                             CanCreateTask = false,
                             CanDeleteDeviation = false,
-                            CanDeleteECR = false,
+                            CanDeleteEcr = false,
                             CanDeleteGroup = false,
                             CanDeleteIntervention = false,
                             CanDeleteReference = false,
                             CanDeleteTask = false,
                             CanReadDeviation = true,
-                            CanReadECR = true,
+                            CanReadEcr = true,
                             CanReadGroup = true,
                             CanReadIntervention = true,
                             CanReadReference = true,
                             CanReadTask = true,
                             CanUpdateDeviation = false,
-                            CanUpdateECR = false,
+                            CanUpdateEcr = false,
                             CanUpdateGroup = false,
                             CanUpdateIntervention = false,
                             CanUpdateReference = false,
                             CanUpdateTask = false,
                             CanUseApp = true,
                             HasAllPrivelage = false,
-                            Id = 2,
-                            Role_Name = "User"
+                            RoleName = "User",
+                            UUID = new Guid("0d4316c0-c198-4809-90e3-4953aa4f81d2")
                         });
                 });
 
-            modelBuilder.Entity("GlobalManagement.Models._DefaultModels._Roles._GlobalRoles._DefaultGlobalRole", b =>
+            modelBuilder.Entity("GlobalManagement.Models._DefaultModels._Roles._GlobalRoles.DefaultGlobalRole", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -387,11 +638,11 @@ namespace GlobalManagement.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("App_Name")
+                    b.Property<string>("AppName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("App_UUID")
+                    b.Property<Guid>("AppUuid")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<bool>("CanAccessGlobal")
@@ -412,12 +663,9 @@ namespace GlobalManagement.Migrations
                     b.Property<bool>("DeleteUser")
                         .HasColumnType("bit");
 
-                    b.Property<string>("Role_Name")
+                    b.Property<string>("RoleName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid>("UUID")
-                        .HasColumnType("uniqueidentifier");
 
                     b.Property<bool>("UpdateCustomRole")
                         .HasColumnType("bit");
@@ -425,9 +673,12 @@ namespace GlobalManagement.Migrations
                     b.Property<bool>("UpdateUser")
                         .HasColumnType("bit");
 
+                    b.Property<Guid>("Uuid")
+                        .HasColumnType("uniqueidentifier");
+
                     b.HasKey("Id");
 
-                    b.HasAlternateKey("UUID");
+                    b.HasAlternateKey("Uuid");
 
                     b.ToTable("GlobalPermissions");
 
@@ -435,34 +686,34 @@ namespace GlobalManagement.Migrations
                         new
                         {
                             Id = 1,
-                            App_Name = "GlobalApp",
-                            App_UUID = new Guid("e1460990-542d-4142-8904-3c10d6a9d6e8"),
+                            AppName = "GlobalApp",
+                            AppUuid = new Guid("e347b87d-f522-43b4-8d5d-6daee67ff31a"),
                             CanAccessGlobal = true,
                             CanBeEdited = false,
                             CreateCustomRole = true,
                             CreateUser = true,
                             DeleteCustomRole = false,
                             DeleteUser = true,
-                            Role_Name = "Administrator",
-                            UUID = new Guid("13865aae-9987-43f9-96d7-0f5b92c67ba9"),
+                            RoleName = "Administrator",
                             UpdateCustomRole = false,
-                            UpdateUser = true
+                            UpdateUser = true,
+                            Uuid = new Guid("6be1dc71-52e3-427e-8b03-e6326f968841")
                         },
                         new
                         {
                             Id = 2,
-                            App_Name = "GlobalApp",
-                            App_UUID = new Guid("e1460990-542d-4142-8904-3c10d6a9d6e8"),
+                            AppName = "GlobalApp",
+                            AppUuid = new Guid("e347b87d-f522-43b4-8d5d-6daee67ff31a"),
                             CanAccessGlobal = false,
                             CanBeEdited = false,
                             CreateCustomRole = false,
                             CreateUser = false,
                             DeleteCustomRole = false,
                             DeleteUser = false,
-                            Role_Name = "User",
-                            UUID = new Guid("84b38df9-0e89-4301-bd01-70b5bb8bf52e"),
+                            RoleName = "User",
                             UpdateCustomRole = false,
-                            UpdateUser = false
+                            UpdateUser = false,
+                            Uuid = new Guid("02114cb7-5245-42e7-bf83-d24654dce948")
                         });
                 });
 
@@ -519,17 +770,17 @@ namespace GlobalManagement.Migrations
                         .HasMaxLength(16)
                         .HasColumnType("int");
 
-                    b.Property<Guid>("UUID")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("UserName")
                         .IsRequired()
                         .HasMaxLength(32)
                         .HasColumnType("nvarchar(32)");
 
+                    b.Property<Guid>("Uuid")
+                        .HasColumnType("uniqueidentifier");
+
                     b.HasKey("Id");
 
-                    b.HasAlternateKey("UUID");
+                    b.HasAlternateKey("Uuid");
 
                     b.ToTable("Users");
 
@@ -538,16 +789,16 @@ namespace GlobalManagement.Migrations
                         {
                             Id = 1,
                             Card = "1234",
-                            CreatedDate = new DateTime(2024, 10, 25, 18, 59, 30, 928, DateTimeKind.Local).AddTicks(5934),
+                            CreatedDate = new DateTime(2024, 11, 19, 8, 46, 28, 479, DateTimeKind.Local).AddTicks(6803),
                             Email = "zyw2.automatyzacja@gmail.com",
                             FirstName = "admin",
                             FullName = "admin admin",
                             IsActive = true,
                             LastName = "admin",
-                            Password = "$2a$11$1nRlsCp3dHz2zrGOl4kcDeGMJTUQ/Ei2ea65C/TUIm8IXvPUoBZWG",
+                            Password = "$2a$11$2d6r3nQ2qGO.IdUXi87LHe3FhuOC5kzj0r.dkke7HERCQkEGVduHS",
                             Pin = 1234,
-                            UUID = new Guid("fc1d498c-746d-4407-b004-394e03756c04"),
-                            UserName = "admin"
+                            UserName = "admin",
+                            Uuid = new Guid("96572ac8-0edf-476d-a3a4-944bd4cc2d4c")
                         });
                 });
 #pragma warning restore 612, 618

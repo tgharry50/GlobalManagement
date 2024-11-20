@@ -1,7 +1,7 @@
 <template>
-    <v-layout>
-        perms
-    </v-layout>
+  <v-layout>
+    perms
+  </v-layout>
 </template>
 <script setup lang="ts">
 

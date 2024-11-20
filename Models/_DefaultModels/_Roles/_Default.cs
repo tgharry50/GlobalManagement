@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace GlobalManagement.Models._DefaultModels._Roles
 {
-    public class _Default
+    public class Default
     {
         
     }

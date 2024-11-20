@@ -3,18 +3,19 @@ using System.ComponentModel.DataAnnotations;
 
 namespace GlobalManagement.Models._DefaultModels._Roles._ControlReportRoles
 {
-    public class _DefaultControlReportRole : _Default
+    public class DefaultControlReportRole : Default
     {
+        // Schemat roli do ControlReport
         [Required, Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         [Required, Key]
         public Guid UUID { get; set; }
         [Required]
-        public required string Role_Name { get; set; }
+        public required string RoleName { get; set; }
         [Required]
-        public required string App_Name { get; set; }
+        public required string AppName { get; set; }
         [Required]
-        public required Guid App_UUID { get; set; }
+        public required Guid AppUuid { get; set; }
         public bool CanBeEdited { get; set; }
         public bool HasAllPrivelage { get; set; }
         public bool CanUseApp {  get; set; }
@@ -34,10 +35,10 @@ namespace GlobalManagement.Models._DefaultModels._Roles._ControlReportRoles
         public bool CanUpdateTask { get; set; }
         public bool CanReadTask { get; set; }
         // ECR
-        public bool CanCreateECR {  get; set; }
-        public bool CanDeleteECR { get; set; }
-        public bool CanUpdateECR { get; set; }
-        public bool CanReadECR { get; set; }
+        public bool CanCreateEcr {  get; set; }
+        public bool CanDeleteEcr { get; set; }
+        public bool CanUpdateEcr { get; set; }
+        public bool CanReadEcr { get; set; }
         // Deviation
         public bool CanCreateDeviation { get; set; }
         public bool CanDeleteDeviation { get; set; }

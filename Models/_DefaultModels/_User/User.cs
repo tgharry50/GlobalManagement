@@ -5,10 +5,11 @@ namespace GlobalManagement.Models._DefaultModels._User
 {
     public class User
     {
+        // Użytkownik
         [Required, Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         [Required, Key]
-        public Guid UUID { get; set; }
+        public Guid Uuid { get; set; }
         [MaxLength(32), Required] 
         public required string UserName { get; set; }
         [Required]
@@ -31,5 +32,7 @@ namespace GlobalManagement.Models._DefaultModels._User
         public required bool IsActive { get; set; }
         public DateTime CreatedDate { get; set; } = DateTime.Now;
         public DateTime? LastUpdatedDate { get; set; }
+        //[Required]
+        //public required int IndividualOrGroupBasedPermissions { get; set; } = 0; // 0 - user, 1 - group, 2+ custom for future
     }
 }

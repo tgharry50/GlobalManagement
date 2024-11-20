@@ -3,18 +3,19 @@ using System.ComponentModel.DataAnnotations;
 
 namespace GlobalManagement.Models._DefaultModels._Roles._GlobalRoles
 {
-    public class _DefaultGlobalRole
+    public class DefaultGlobalRole
     {
+        // Schemat globalnej roli
         [Required, Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         [Required, Key]
-        public Guid UUID { get; set; }
+        public Guid Uuid { get; set; }
         [Required]
-        public required string Role_Name { get; set; }
+        public required string RoleName { get; set; }
         [Required]
-        public required string App_Name { get; set; }
+        public required string AppName { get; set; }
         [Required]
-        public required Guid App_UUID { get; set; }
+        public required Guid AppUuid { get; set; }
         [Required]
         public bool CanAccessGlobal { get; set; }
         [Required]
