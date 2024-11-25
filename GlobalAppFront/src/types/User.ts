@@ -22,3 +22,20 @@ export interface CreateUser {
     card: string;
     pin: number | null;
 }
+
+export interface UserGlobalPerms{
+    canAccessGloba:boolean,
+    canBeEdited:boolean,
+    // User
+    createUser:boolean,
+    updateUser:boolean,
+    canDeleteUser:boolean,
+    // Roles
+    createCustomRole:boolean,
+    updateCustomRole:boolean,
+    deleteCustomRole:boolean,
+    // Groups
+    canCreateGroup:boolean,
+    canDeleteGroup:boolean,
+    canUpdateGroup:boolean
+}

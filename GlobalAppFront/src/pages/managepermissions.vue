@@ -1,6 +1,8 @@
 <template>
   <v-layout>
-    perms
+    <v-container fill-height fluid>
+      rse
+    </v-container>
   </v-layout>
 </template>
 <script setup lang="ts">

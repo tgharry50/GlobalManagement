@@ -7,12 +7,18 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    AddOwner: typeof import('./components/templates/ManageAppsComponents/_Contact/AddOwner.vue')['default']
     AppFooter: typeof import('./components/PageLayout/AppFooter.vue')['default']
     AppHeader: typeof import('./components/PageLayout/AppHeader.vue')['default']
     AppSideMenu: typeof import('./components/PageLayout/AppSideMenu.vue')['default']
     AppSidePanel: typeof import('./components/PageLayout/AppSidePanel.vue')['default']
+    Contact: typeof import('./components/templates/ManageAppsComponents/Contact.vue')['default']
+    ContactAddUserDialog: typeof import('./components/templates/ManageAppsComponents/_Contact/ContactAddUserDialog.vue')['default']
+    ContactRemoveUserDialog: typeof import('./components/templates/ManageAppsComponents/_Contact/ContactRemoveUserDialog.vue')['default']
+    CreateApp: typeof import('./components/templates/ManageAppsComponents/CreateApp.vue')['default']
     DataTable: typeof import('./components/templates/ManageUserComponents/DataTable.vue')['default']
     DataTables: typeof import('./components/templates/ManageGroupsComponents/DataTables.vue')['default']
+    EditApp: typeof import('./components/templates/ManageAppsComponents/EditApp.vue')['default']
     HelloWorld: typeof import('./components/HelloWorld.vue')['default']
     ManageGroupsAddGroup: typeof import('./components/templates/ManageGroupsComponents/ManageGroupsAddGroup.vue')['default']
     ManageUserActivityChangeDialog: typeof import('./components/templates/ManageUserComponents/ManageUserActivityChangeDialog.vue')['default']
@@ -22,6 +28,8 @@ declare module 'vue' {
     ManageUserRemoveDialog: typeof import('./components/templates/ManageUserComponents/ManageUserRemoveDialog.vue')['default']
     Menus: typeof import('./components/templates/ManageAppsComponents/Menus.vue')['default']
     Panels: typeof import('./components/templates/ManageAppsComponents/Panels.vue')['default']
+    RemoveApp: typeof import('./components/templates/ManageAppsComponents/RemoveApp.vue')['default']
+    RemoveOwner: typeof import('./components/templates/ManageAppsComponents/_Contact/RemoveOwner.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     Snackbar: typeof import('./components/multiuse/Snackbar.vue')['default']

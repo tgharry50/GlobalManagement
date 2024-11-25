@@ -6,5 +6,5 @@
   </v-layout>
 </template>
 <script lang="ts">
-  import DataTables from '@/components/templates/ManageGroupsComponents/DataTables.vue'
+import DataTables from '@/components/templates/ManageGroupsComponents/DataTables.vue'
 </script>

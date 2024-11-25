@@ -1,10 +1,16 @@
 <template>
   <v-layout>
     <v-container>
-      <DataTable
-        :headers="tableHeaders"
-        :items="tableItems"
-      />
+      <v-data-skeleton
+      v-if="loading"
+      height="250"
+      type="data-table"
+      >
+        <DataTable
+          :headers="tableHeaders"
+          :items="tableItems"
+        />
+      </v-data-skeleton>
     </v-container>
   </v-layout>
 </template>
@@ -14,6 +20,7 @@
   import { inject, onMounted, ref } from 'vue'
   import axios from 'axios'
   import { User } from '@/types/User'
+  const loading = ref(false);
   // Inject
   const base_url = inject<string>('url')
   //
@@ -32,7 +39,10 @@
   onMounted(async () => {
     try {
       const response = await axios.get<User[]>(`${base_url}/users`)
-      tableItems.value = response.data
+      if(response){
+        loading.value = true
+        tableItems.value = response.data
+      }
     } catch (error) {
       console.error('Error fetching data:', error)
     }

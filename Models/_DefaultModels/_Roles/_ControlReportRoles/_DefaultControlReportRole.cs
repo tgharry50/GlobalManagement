@@ -44,10 +44,5 @@ namespace GlobalManagement.Models._DefaultModels._Roles._ControlReportRoles
         public bool CanDeleteDeviation { get; set; }
         public bool CanUpdateDeviation { get; set; }
         public bool CanReadDeviation { get; set; }
-        // Groups
-        public bool CanCreateGroup {  get; set; }
-        public bool CanDeleteGroup { get; set; }
-        public bool CanUpdateGroup { get; set; }
-        public bool CanReadGroup { get; set; }
     }
 }

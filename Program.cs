@@ -19,7 +19,7 @@ namespace GlobalManagement
             builder.Services.AddSwaggerGen();
             builder.Services.AddDbContext<GlobalDatabase>(o =>
             {
-                o.UseSqlServer(builder.Configuration.GetConnectionString("Development"));
+                o.UseSqlServer(builder.Configuration.GetConnectionString("Remote"));
             });
             builder.Services.AddCors(c =>
             {
@@ -43,7 +43,10 @@ namespace GlobalManagement
                 Console.ForegroundColor = ConsoleColor.White;
             }
             app.UseAuthorization();
-
+            app.UseCors(app =>
+            {
+                app.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin();
+            });
 
             app.MapControllers();
 

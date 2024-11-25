@@ -6,7 +6,7 @@
           <h2>Aplikacje</h2>
         </v-col>
         <v-col>
-          <Menus></Menus>
+          <Menus />
         </v-col>
       </v-row>
       <v-row>
