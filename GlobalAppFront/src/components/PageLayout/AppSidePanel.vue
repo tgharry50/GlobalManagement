@@ -22,7 +22,7 @@
       <v-list-item title="Aplikacje" @click="router.push('/manageapps')">
         <template #prepend><v-icon icon="mdi mdi-application-cog-outline" /></template>
       </v-list-item>
-      <v-list-item title="Opcje" @click="router.push('/options')">
+      <v-list-item disabled title="Opcje" @click="router.push('/options')">
         <template #prepend><v-icon icon="mdi-cog-box" /></template>
       </v-list-item>
       <v-list-item title="Zarządzaj uprawnieniami" @click="router.push('/managepermissions')">

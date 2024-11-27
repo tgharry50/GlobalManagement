@@ -19,7 +19,7 @@ namespace GlobalManagement
             builder.Services.AddSwaggerGen();
             builder.Services.AddDbContext<GlobalDatabase>(o =>
             {
-                o.UseSqlServer(builder.Configuration.GetConnectionString("Remote"));
+                o.UseSqlServer(builder.Configuration.GetConnectionString("Production"));
             });
             builder.Services.AddCors(c =>
             {

@@ -1,3 +1,7 @@
+export interface UserName{
+    uuid: string,
+    fullName: string
+}
 export interface UserPerm{
     uuid: string,
     fullName: string,
@@ -12,9 +16,8 @@ export interface AppPerms{
     appName:string,
     appUuid:string,
 }
-
 export interface GlobalAppPerms extends AppPerms{
-    canAccessGloba:boolean,
+    canAccessGlobal:boolean,
     canBeEdited:boolean,
     // User
     createUser:boolean,

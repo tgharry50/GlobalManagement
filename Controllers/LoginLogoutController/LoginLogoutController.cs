@@ -13,7 +13,7 @@ namespace GlobalManagement.Controllers.LoginLogoutController
 
         // POST: Login
         [HttpPost("login")]
-        public async Task<IActionResult> Login(LoginDto dto)
+        public async Task<IActionResult> Login(_LoginModel.Login dto)
         {
             Login login = new(Context);
             return await login._Login(dto);

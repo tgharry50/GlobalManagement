@@ -23,9 +23,7 @@
 
   <ItemGroup>
     <Folder Include="Controllers\IndexController\sub_controller\" />
-    <Folder Include="Controllers\IndexController\_dto\" />
     <Folder Include="Controllers\OptionsController\" />
-    <Folder Include="Controllers\PermissionsController\" />
     <Folder Include="Migrations\" />
     <Folder Include="Models\MailService\_DefaultControlReportMail\_ControlReportMail\" />
     <Folder Include="Models\MailService\_DefaultGlobalAppMail\" />

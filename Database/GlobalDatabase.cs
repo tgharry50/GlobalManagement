@@ -131,6 +131,11 @@ namespace GlobalManagement.Database
                     UpdateUser = true,
                     DeleteUser = true,
                     CreateCustomRole = true,
+                    CanCreateGroup = true,
+                    CanDeleteGroup = true,
+                    CanUpdateGroup = true,
+                    DeleteCustomRole = true,
+                    UpdateCustomRole = true
                 });
                 e.HasData(new DefaultGlobalRole()
                 {
@@ -145,6 +150,11 @@ namespace GlobalManagement.Database
                     UpdateUser = false,
                     DeleteUser = false,
                     CreateCustomRole = false,
+                    CanCreateGroup = false,
+                    CanDeleteGroup = false,
+                    CanUpdateGroup = false,
+                    DeleteCustomRole = false,
+                    UpdateCustomRole = false
                 });
             });
             Guid cr = Guid.NewGuid();
@@ -179,10 +189,6 @@ namespace GlobalManagement.Database
                 e.Property(e => e.CanDeleteEcr).IsRequired();
                 e.Property(e => e.CanUpdateEcr).IsRequired();
                 // deviation
-                e.Property(e => e.CanCreateGroup).IsRequired();
-                e.Property(e => e.CanReadGroup).IsRequired();
-                e.Property(e => e.CanUpdateGroup).IsRequired();
-                e.Property(e => e.CanDeleteGroup).IsRequired();
                 e.HasData(new DefaultControlReportRole()
                 {
                     Id = 1,
@@ -212,10 +218,6 @@ namespace GlobalManagement.Database
                     CanCreateDeviation = true,
                     CanReadDeviation = true,
                     CanUpdateDeviation = true,
-                    CanCreateGroup = true,
-                    CanReadGroup = true,
-                    CanUpdateGroup = true,
-                    CanDeleteGroup = true,
                 });
                 e.HasData(new DefaultControlReportRole()
                 {
@@ -246,10 +248,6 @@ namespace GlobalManagement.Database
                     CanCreateDeviation = false,
                     CanReadDeviation = true,
                     CanUpdateDeviation = false,
-                    CanCreateGroup = false,
-                    CanReadGroup = true,
-                    CanUpdateGroup = false,
-                    CanDeleteGroup = false,
                 });
             });
             // First Creation

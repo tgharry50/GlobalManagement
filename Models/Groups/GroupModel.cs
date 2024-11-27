@@ -23,6 +23,8 @@ namespace GlobalManagement.Models.Groups
         [Required]
         public required string Section { get; set; }
         [Required]
+        public required string Type {  get; set; }
+        [Required]
         public required bool IsActive { get; set; }
         [Required]
         public required DateTime CreatedAt { get; set; }

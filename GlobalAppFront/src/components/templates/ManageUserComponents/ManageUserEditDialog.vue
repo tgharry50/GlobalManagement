@@ -68,7 +68,7 @@
                 :rules="
                   [
                     v => /^[a-zA-Z]*$/.test(v) || 'Login musi składać się z liter',
-                    v => v.length >= 2 || 'Login musi mieć minimum 4 znaki'
+                    v => v.length >= 2 || 'Login musi mieć minimum 2 znaki'
                   ]"
               />
               <v-text-field
