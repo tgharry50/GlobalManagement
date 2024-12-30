@@ -9,6 +9,7 @@
         <DataTable
           :headers="tableHeaders"
           :items="tableItems"
+          @update="Update"
         />
       </v-data-skeleton>
     </v-container>
@@ -21,6 +22,7 @@
   import axios from 'axios'
   import { User } from '@/types/User'
   const loading = ref(false);
+  const emits = defineEmits(['update']) // Emits
   // Inject
   const base_url = inject<string>('url')
   //
@@ -37,6 +39,9 @@
   const tableItems = ref<User[]>([])
 
   onMounted(async () => {
+    await Update()
+  })
+  async function Update() {
     try {
       const response = await axios.get<User[]>(`${base_url}/users`)
       if(response){
@@ -46,6 +51,6 @@
     } catch (error) {
       console.error('Error fetching data:', error)
     }
-  })
-
+    console.log('update')
+  }
 </script>

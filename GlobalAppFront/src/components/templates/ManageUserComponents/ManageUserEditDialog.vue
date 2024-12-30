@@ -4,6 +4,8 @@
   import { defineEmits, defineProps, ref } from 'vue'
   import axios from 'axios'
   import Snackbar from '@/components/multiuse/Snackbar.vue'
+  // Inject
+  const base_url = inject<string>('url')
   //
   const emits = defineEmits(['edit', 'dialog-closed']) // Emits
   const props = defineProps<{
@@ -14,6 +16,7 @@
   const isValid = ref(false) // Use ref for reactivity
   const showSnackbar = ref(false) // Use for snackbar display
   const colorSnackbar = ref('white') // Use for background color of snackbar
+  const message = ref('Default');
   const item = ref<CreateUser>({ // Modified user
     userName: props.userdata.userName,
     firstName: props.userdata.firstName,
@@ -23,14 +26,33 @@
     password: props.userdata.password,
     pin: props.userdata.pin,
   })
-  const reset_item = ref<CreateUser>({ ...item.value })
+  const reset_item = ref<CreateUser>({ ...item.value }) 
   // Function
-  const saveItem = () => { // Function to save the item
-    emits('edit', item)
-    showSnackbar.value = true
-    closeDialog()
+  const saveItem = async () => { // Function to save the item
+    try{
+      const result = await axios.put(`${base_url}/users/edit/${props.uuid}`, item.value)
+      if(result){
+        colorSnackbar.value = 'green'
+        message.value = 'Zmodyfikowano użytkownika'
+        emits('edit', item)
+        showSnackbar.value = true
+        closeDialog()
+      } else{
+        console.error(result)
+        colorSnackbar.value = 'yellow'
+        message.value = 'Nie udało się zmodyfikować użytkownika'
+        emits('edit', item)
+        showSnackbar.value = true
+        closeDialog()
+      }
+    } catch(Error){
+      colorSnackbar.value = 'red'
+      message.value = 'Nie udało się zmodyfikować użytkownika'
+      emits('edit', item)
+      showSnackbar.value = true
+      closeDialog()
+    }
   }
-
   const closeDialog = () => { // Function to close the dialog
     dialog.value = false
     item.value = { ...reset_item.value }
@@ -124,18 +146,20 @@
             </v-col>
           </v-row>
           <v-row>
-            <v-text-field
-              v-model="item.email"
-              counter="64"
-              label="E-mail"
-              maxlength="64"
-              required
-              :rules="
-                [
-                  v => /.+@.+\..+/.test(v) || 'E-mail musi być poprawny',
-                  v => v.length >= 4 || 'E-mail musi mieć minimum 4 znaki'
-                ]"
-            />
+              <v-col>
+                <v-text-field
+                maxlength="64"
+                required
+                v-model="item.email"
+                counter="64"
+                label="E-mail"
+                :rules="
+                  [
+                    v => /.+@.+\..+/.test(v) || 'E-mail musi być poprawny',
+                    v => v.length >= 4 || 'E-mail musi mieć minimum 4 znaki'
+                  ]"
+                />
+            </v-col>
           </v-row>
         </v-form>
       </v-card-text>
@@ -146,5 +170,5 @@
       </v-card-actions>
     </v-card>
   </v-dialog>
-  <Snackbar :color="colorSnackbar" :message="'Test'" :show="showSnackbar" @update:show="showSnackbar = $event" />
+  <Snackbar :color="colorSnackbar" :message="message" :show="showSnackbar" @update:show="showSnackbar = $event" />
 </template>

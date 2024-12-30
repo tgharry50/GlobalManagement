@@ -15,8 +15,8 @@ namespace GlobalManagement.Controllers.UsersController.sub_controller
             {
                 User? user = await Context.Users.FirstOrDefaultAsync(u => u.Uuid == uuid);
                 if (user == null) return NotFound();
-                Context.Users.Remove(user);
-                await Context.SaveChangesAsync();
+                //Context.Users.Remove(user);
+                //await Context.SaveChangesAsync();
                 return Ok();
             }
             catch

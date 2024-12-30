@@ -2,6 +2,9 @@
   import { defineEmits, defineProps, ref } from 'vue'
   import axios from 'axios'
   import Snackbar from '@/components/multiuse/Snackbar.vue'
+  // Inject
+  const base_url = inject<string>('url')
+  //
   const emits = defineEmits(['delete', 'dialog-closed']) // Emits
   const props = defineProps<{
     uuid: string,
@@ -11,15 +14,34 @@
   const dialog = ref(false) // Define the dialog property
   const showSnackbar = ref(false) // Use for snackbar display
   const colorSnackbar = ref('white') // Use for background color of snackbar
+  const message = ref('') // Message
   //
   // Function
-  const saveItem = () => { // Function to save the item
-    emits('delete', props.uuid)
-    agreed.value = false
-    showSnackbar.value = true
-    closeDialog()
+  const deleteItem = async () => { // Function to save the item
+    try{
+      const result = await axios.post(`${base_url}/users/delete/${props.uuid}`)  
+      if(result){
+        message.value = 'Usunięto użytkownika'
+        colorSnackbar.value = 'green'
+        emits('delete', props.uuid)
+        agreed.value = false
+        showSnackbar.value = true
+        closeDialog()
+      }  else {
+        colorSnackbar.value = 'yellow'
+        message.value = 'Nie udało się usunąć użytkownika'
+        emits('delete', props.uuid)
+        showSnackbar.value = true
+        closeDialog()
+      }
+    } catch(Error){
+      colorSnackbar.value = 'red'
+      message.value = 'Nie udało się usunąć użytkownika'
+      emits('delete', props.uuid)
+      showSnackbar.value = true
+      closeDialog()
+    }
   }
-
   const closeDialog = () => { // Function to close the dialog
     dialog.value = false
     agreed.value = false
@@ -52,9 +74,9 @@
       <v-card-actions>
         <v-spacer />
         <v-btn color="gray" @click="closeDialog">Zamknij</v-btn>
-        <v-btn color="red" :disabled="!agreed" @click="saveItem">Usuń</v-btn>
+        <v-btn color="red" :disabled="!agreed" @click="deleteItem">Usuń</v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>
-  <Snackbar :color="colorSnackbar" :message="'Test'" :show="showSnackbar" @update:show="showSnackbar = $event" />
+  <Snackbar :color="colorSnackbar" :message="message" :show="showSnackbar" @update:show="showSnackbar = $event" />
 </template>

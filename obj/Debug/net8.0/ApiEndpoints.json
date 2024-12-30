@@ -9,7 +9,7 @@
     "Parameters": [
       {
         "Name": "dto",
-        "Type": "GlobalManagement.Controllers.LoginLogoutController._dto.LoginDto",
+        "Type": "GlobalManagement.Controllers.LoginLogoutController._dto._LoginModel\u002BLogin",
         "IsRequired": true
       }
     ],
@@ -32,16 +32,114 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "GlobalManagement.Controllers.LoginLogoutController.sub_controller.Login",
-    "Method": "_Login",
-    "RelativePath": "login",
+    "ContainingType": "GlobalManagement.Controllers.ApplicationsController.ApplicationController",
+    "Method": "GetAllApplications",
+    "RelativePath": "application/all",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GlobalManagement.Controllers.GroupsController.GroupController",
+    "Method": "GetAllGroups",
+    "RelativePath": "group/all",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GlobalManagement.Controllers.GroupsController.GroupController",
+    "Method": "CreateGroup",
+    "RelativePath": "group/create",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "dto",
-        "Type": "GlobalManagement.Controllers.LoginLogoutController._dto.LoginDto",
+        "Name": "Name",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Description",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Hala",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Section",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Type",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GlobalManagement.Controllers.GroupsController.GroupController",
+    "Method": "AddMember",
+    "RelativePath": "group/members/add",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "GroupUUID",
+        "Type": "System.Guid",
+        "IsRequired": false
+      },
+      {
+        "Name": "UserGuid",
+        "Type": "System.Guid",
+        "IsRequired": false
+      },
+      {
+        "Name": "RoleGuid",
+        "Type": "System.Guid",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GlobalManagement.Controllers.GroupsController.GroupController",
+    "Method": "GetAllMembers",
+    "RelativePath": "group/members/get/{uuid}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "uuid",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GlobalManagement.Controllers.GroupsController.GroupController",
+    "Method": "GetRoles",
+    "RelativePath": "group/roles/{uuid}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "uuid",
+        "Type": "System.Guid",
         "IsRequired": true
       }
     ],
@@ -58,6 +156,22 @@
       {
         "Name": "uuid",
         "Type": "System.Guid",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GlobalManagement.Controllers.PermissionsController.PermissionController",
+    "Method": "GetAllRolesFromSpecificApp",
+    "RelativePath": "permission/gap",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "app",
+        "Type": "System.String",
         "IsRequired": false
       }
     ],
@@ -91,22 +205,6 @@
   },
   {
     "ContainingType": "GlobalManagement.Controllers.UsersController.UserController",
-    "Method": "RemoveUser",
-    "RelativePath": "users",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "uuid",
-        "Type": "System.Guid",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "GlobalManagement.Controllers.UsersController.UserController",
     "Method": "GetUser",
     "RelativePath": "users/{uuid}",
     "HttpMethod": "GET",
@@ -124,7 +222,7 @@
   {
     "ContainingType": "GlobalManagement.Controllers.UsersController.UserController",
     "Method": "UpdateUserActive",
-    "RelativePath": "users/active",
+    "RelativePath": "users/active/{uuid}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -132,7 +230,39 @@
       {
         "Name": "uuid",
         "Type": "System.Guid",
-        "IsRequired": false
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GlobalManagement.Controllers.UsersController.UserController",
+    "Method": "UpdateUserDeactive",
+    "RelativePath": "users/deactive/{uuid}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "uuid",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GlobalManagement.Controllers.UsersController.UserController",
+    "Method": "RemoveUser",
+    "RelativePath": "users/delete/{uuid}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "uuid",
+        "Type": "System.String",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
@@ -140,7 +270,7 @@
   {
     "ContainingType": "GlobalManagement.Controllers.UsersController.UserController",
     "Method": "UpdateUserBasic",
-    "RelativePath": "users/basic",
+    "RelativePath": "users/edit/{uuid}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -148,7 +278,7 @@
       {
         "Name": "uuid",
         "Type": "System.Guid",
-        "IsRequired": false
+        "IsRequired": true
       },
       {
         "Name": "dto",
@@ -177,7 +307,7 @@
   {
     "ContainingType": "GlobalManagement.Controllers.UsersController.UserController",
     "Method": "UpdateUserPassword",
-    "RelativePath": "users/password",
+    "RelativePath": "users/password/{uuid}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -185,7 +315,7 @@
       {
         "Name": "uuid",
         "Type": "System.Guid",
-        "IsRequired": false
+        "IsRequired": true
       },
       {
         "Name": "dto",

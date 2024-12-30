@@ -9,6 +9,7 @@
   const isValid = ref(false) // Use for checking if form is Valid
   const showSnackbar = ref(false) // Use for snackbar display
   const colorSnackbar = ref('white') // Use for background color of snackbar
+  const message = ref('');
   const item = ref<CreateUser>({ // Created User data
     userName: '',
     firstName: '',
@@ -149,5 +150,5 @@
       </v-card-actions>
     </v-card>
   </v-dialog>
-  <Snackbar :color="colorSnackbar" :message="'Test'" :show="showSnackbar" @update:show="showSnackbar = $event" />
+  <Snackbar :color="colorSnackbar" :message="message" :show="showSnackbar" @update:show="showSnackbar = $event" />
 </template>

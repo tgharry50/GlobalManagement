@@ -1,9 +1,8 @@
 ﻿using GlobalManagement.Controllers.UsersController._dto;
 using GlobalManagement.Controllers.UsersController.sub_controller;
 using GlobalManagement.Database;
-using GlobalManagement.Models._DefaultModels._User;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GlobalManagement.Controllers.UsersController
 {
@@ -28,28 +27,30 @@ namespace GlobalManagement.Controllers.UsersController
             return await gu._Get(uuid);
         }
         // POST: Create user
-        [HttpPost]
+        [HttpPost()]
         public async Task<IActionResult> CreateUser(CreateUserdto dto)
         {
             CreateUser cu = new(Context);
             return await cu._Create(dto);
         }
-        // DELETE: Remove user
-        [HttpDelete]
-        public async Task<IActionResult> RemoveUser(Guid uuid)
+        // DELETE: Remove user 
+        [HttpPost("delete/{uuid}")]
+        public async Task<IActionResult> RemoveUser(string uuid)
         {
+            Guid s = new Guid(uuid);
             RemoveUser ru = new(Context);
-            return await ru._Remove(uuid);
+            return await ru._Remove(s);
         }
-        // UPDATE: Update user Basic
-        [HttpPut("basic")]
+        //
+        // UPDATE: Update user Basic < DONE
+        [HttpPut("edit/{uuid}")]
         public async Task<IActionResult> UpdateUserBasic(Guid uuid, UpdateUserBasicdto dto)
         {
             UpdateUserBasic uub = new(Context);
             return await uub._Update(uuid, dto);
         }
         // UPDATE: Update user Password
-        [HttpPut("password")]
+        [HttpPut("password/{uuid}")]
         public async Task<IActionResult> UpdateUserPassword(Guid uuid, UpdateUserPassworddto dto)
         {
             UpdateUserPassword uup = new(Context);
@@ -63,8 +64,14 @@ namespace GlobalManagement.Controllers.UsersController
             return await fuup._Update(uuid);
         }
         // UPDATE: Update user active
-        [HttpPut("active")]
+        [HttpPut("active/{uuid}")]
         public async Task<IActionResult> UpdateUserActive(Guid uuid)
+        {
+            UpdateUserActive uua = new(Context);
+            return await uua._Update(uuid);
+        }
+        [HttpPut("deactive/{uuid}")]
+        public async Task<IActionResult> UpdateUserDeactive(Guid uuid)
         {
             UpdateUserActive uua = new(Context);
             return await uua._Update(uuid);

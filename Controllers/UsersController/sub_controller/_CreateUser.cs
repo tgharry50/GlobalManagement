@@ -28,7 +28,7 @@ namespace GlobalManagement.Controllers.UsersController.sub_controller
                     IsActive = true,
                     CreatedDate = DateTime.Now,
                 };
-                Context.Users.Add(user);
+                await Context.Users.AddAsync(user);
                 await Context.SaveChangesAsync();
                 return Ok();
             }

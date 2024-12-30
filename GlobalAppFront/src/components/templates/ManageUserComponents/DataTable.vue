@@ -9,21 +9,23 @@
   import { User } from '@/types/User'
   //
   type ItemType = Record<string, any>
-
+  const emits = defineEmits(['update']) // Emits
   const props = defineProps<{
     headers: Array<object>,
     items: Array<User>
   }>()
-  const handleEdit = (item: ItemType) => {
-    console.log('Edit item:', item.uuid)
+  const handleEdit = () => {
+    emits('update', true)
+  }
+  const handleUpdate = () => {
+    emits('update', true)
+  }
+  const handleRemove = () => {
+    emits('update', true)
   }
 
-  const handleRemove = (item: ItemType) => {
-    console.log('Remove item:', item)
-  }
-
-  const handleAdd = (item: ItemType) => {
-    console.log('Add item', item)
+  const handleAdd = () => {
+    emits('update', true)
   }
 
 </script>
@@ -68,11 +70,11 @@
         @edit="handleEdit"
       />
       <!-- Delete -->
-      <murd :fullname="item.fullName" :uuid="item.uuid" />
+      <murd :fullname="item.fullName" :uuid="item.uuid" @delete="handleRemove"/>
       <!-- Change Status -->
-      <muacd :fullname="item.fullName" :status="item.isActive" :uuid="item.uuid" />
+      <muacd :fullname="item.fullName" :status="item.isActive" :uuid="item.uuid" @status="handleUpdate" />
       <!-- Force change password -->
-      <mucpd :uuid="item.uuid" />
+      <mucpd :uuid="item.uuid"  />
     </template>
   </v-data-table>
 </template>

@@ -1,11 +1,12 @@
 {
   "Version": 1,
-  "Hash": "xVsCn4byHqmHliuj5+X4AW+CSIdnOUsvIa/jFVNwbHk=",
+  "Hash": "odWsObm60MkYCRtYSQcvoozL11X1u9o03iKwBUYiBs4=",
   "Source": "GlobalManagement",
   "BasePath": "_content/GlobalManagement",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
   "DiscoveryPatterns": [],
-  "Assets": []
+  "Assets": [],
+  "Endpoints": []
 }

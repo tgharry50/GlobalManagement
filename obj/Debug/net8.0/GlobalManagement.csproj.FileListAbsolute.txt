@@ -147,3 +147,7 @@ C:\Users\a0h70032\source\repos\GlobalManagement\GlobalManagement\bin\Debug\net8.
 C:\Users\a0h70032\source\repos\GlobalManagement\GlobalManagement\bin\Debug\net8.0\GlobalAppFront\package.json
 C:\Users\a0h70032\source\repos\GlobalManagement\GlobalManagement\bin\Debug\net8.0\GlobalAppFront\tsconfig.json
 C:\Users\a0h70032\source\repos\GlobalManagement\GlobalManagement\bin\Debug\net8.0\GlobalAppFront\tsconfig.node.json
+C:\Users\a0h70032\source\repos\GlobalManagement\GlobalManagement\bin\Debug\net8.0\GlobalManagement.staticwebassets.endpoints.json
+C:\Users\a0h70032\source\repos\GlobalManagement\GlobalManagement\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+C:\Users\a0h70032\source\repos\GlobalManagement\GlobalManagement\obj\Debug\net8.0\staticwebassets\msbuild.GlobalManagement.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+C:\Users\a0h70032\source\repos\GlobalManagement\GlobalManagement\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

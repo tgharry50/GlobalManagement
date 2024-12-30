@@ -2,6 +2,8 @@
   import { defineEmits, defineProps, ref } from 'vue'
   import axios from 'axios'
   import Snackbar from '@/components/multiuse/Snackbar.vue'
+  // Inject
+  const base_url = inject<string>('url')
   const emits = defineEmits(['change', 'dialog-closed']) // Emits
   const props = defineProps<{
     uuid: string,
@@ -9,21 +11,44 @@
   const dialog = ref(false) // Define the dialog property
   const showSnackbar = ref(false) // Use for snackbar display
   const colorSnackbar = ref('white') // Use for background color of snackbar
+  const message = ref('') // Message
+
   //
   const change_value = ref<Number | null>()
+  const change_value2 = ref<Number | null>()
   const isValid = ref(false)
   const agreed = ref(false)
   //
-  const saveItem = () => { // Function to save the item
-    emits('change', props.uuid)
-    showSnackbar.value = true
-    change_value.value = null
-    closeDialog()
+  const saveItem = async () => { // Function to save the item
+    try{
+      const result = await axios.post(`${base_url}/users/password/${props.uuid}`)  
+      if(result){
+        message.value = 'Zmieniono hasło użytkownika'
+        colorSnackbar.value = 'green'
+        emits('change', props.uuid)
+        agreed.value = false
+        showSnackbar.value = true
+        closeDialog()
+      }  else {
+        colorSnackbar.value = 'yellow'
+        message.value = 'Nie udało się zmienić hasła użytkownika'
+        emits('change', props.uuid)
+        showSnackbar.value = true
+        closeDialog()
+      }
+    } catch(Error){
+      colorSnackbar.value = 'red'
+      message.value = 'Nie udało się zmienić hasła użytkownika'
+      emits('change', props.uuid)
+      showSnackbar.value = true
+      closeDialog()
+    }
   }
 
   const closeDialog = () => { // Function to close the dialog
-    dialog.value = false
     change_value.value = null
+    change_value2.value = null
+    dialog.value = false
     emits('dialog-closed', true)
   }
   const activeTab = ref('1') // active tab
@@ -67,11 +92,21 @@
                       v => !v || v.length >= 8 || 'Hasło musi mieć minimum 8 znaków'
                     ]"
                   />
+                  <v-text-field
+                    v-model="change_value2"
+                    counter="256"
+                    label="Wpisz ponownie nowe hasło"
+                    maxlength="256"
+                    required
+                    :rules="[
+                      v => change_value == change_value2 || 'Hasła nie są zgodnę'
+                    ]"
+                  />
                 </v-form>
               </v-card-text>
               <v-card-actions>
                 <v-spacer />
-                <v-btn color="green" :disabled="!isValid" @click="saveItem">Zmień</v-btn>
+                <v-btn color="green" :disabled="(!isValid) || !!change_value || !!change_value2" @click="saveItem">Zmień</v-btn>
               </v-card-actions>
             </v-card>
           </v-tabs-window-item>
