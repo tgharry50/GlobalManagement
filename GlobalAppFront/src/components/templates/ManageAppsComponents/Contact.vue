@@ -24,7 +24,7 @@ onMounted(async () => {
 <v-dialog v-model="dialog" max-width="500px">
     <template #activator="{isActive, props}">
         <v-btn
-        v-tooltop:bottom="`Osoby zarządzające`"
+        v-tooltip:bottom="`Osoby zarządzające`"
         class="mt-1 mb-1 me-1 ms-1"
         color="blue"
         size="30"

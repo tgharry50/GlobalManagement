@@ -20,7 +20,7 @@ const reset_item = ref<string>(item.value);
 // Function
 const saveItem = async () => { // Function to run the delete
     try{
-      const result = await axios.post(`${API_BASE_URL}//${props.uuid}`);
+      const result = await axios.delete(`${API_BASE_URL}/group/delete/${props.uuid}`);
       if(result){
         colorSnackbar.value = 'green'
         message.value = 'Usunięto grupę'

@@ -1,20 +1,3 @@
-<template>
-  <v-layout>
-    <v-container>
-      <v-data-skeleton
-      v-if="loading"
-      height="250"
-      type="data-table"
-      >
-        <DataTable
-          :headers="tableHeaders"
-          :items="tableItems"
-          @update="Update"
-        />
-      </v-data-skeleton>
-    </v-container>
-  </v-layout>
-</template>
 <script setup lang="ts">
 // Imports
   import DataTable from '@/components/templates/ManageUserComponents/DataTable.vue'
@@ -51,6 +34,21 @@
     } catch (error) {
       console.error('Error fetching data:', error)
     }
-    console.log('update')
   }
 </script>
+
+<template>
+  <v-layout>
+    <v-container v-if="loading">
+        <DataTable
+          :headers="tableHeaders"
+          :items="tableItems"
+          @update="Update"
+        />
+    </v-container>
+    <v-container v-else>
+      <p>Wczytywanie</p>
+      <v-progress-linear indeterminate></v-progress-linear>
+    </v-container>
+  </v-layout>
+</template>

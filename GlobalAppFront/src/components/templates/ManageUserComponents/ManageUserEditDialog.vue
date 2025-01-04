@@ -30,7 +30,14 @@
   // Function
   const saveItem = async () => { // Function to save the item
     try{
-      const result = await axios.put(`${base_url}/users/edit/${props.uuid}`, item.value)
+      const form = new FormData();
+      form.append('UserName', item.value.userName)
+      form.append('FirstName', item.value.firstName)
+      form.append('LastName', item.value.lastName)
+      form.append('Email', item.value.email)
+      form.append('Card', item.value.card)
+      form.append('Pin', item.value.pin!.toString())
+      const result = await axios.put(`${base_url}/users/edit/${props.uuid}`, form)
       if(result){
         colorSnackbar.value = 'green'
         message.value = 'Zmodyfikowano użytkownika'

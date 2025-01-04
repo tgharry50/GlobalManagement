@@ -4,6 +4,7 @@
   import Snackbar from '@/components/multiuse/Snackbar.vue'
   import axios from 'axios'
   //
+  const base_url = inject<string>('url')  
   const emits = defineEmits(['create', 'dialog-closed'])
   const dialog = ref(false) // Define the dialog property
   const isValid = ref(false) // Use for checking if form is Valid
@@ -22,11 +23,38 @@
 
   const reset_item = ref<CreateUser>({ ...item.value })
   // Function
-  const saveItem = () => { // Function to save the item
-    showSnackbar.value = true
-    closeDialog()
-    item.value = { ...reset_item.value }
-    emits('create', item)
+  const saveItem = async () => { // Function to save the item
+    try{
+      const form = new FormData()
+      form.append('UserName', item.value.userName)
+      form.append('FirstName', item.value.firstName)
+      form.append('LastName', item.value.lastName)
+      form.append('Email', item.value.email)
+      form.append('Card', item.value.card)
+      form.append('Password', item.value.password)
+      form.append('Pin', item.value.pin!.toString())
+      const result = await axios.post(`${base_url}/users/create`, item.value)
+      if(result){
+        colorSnackbar.value = 'green'
+        message.value = 'Dodano użytkownika'
+        emits('create', item)
+        showSnackbar.value = true
+        closeDialog()
+      } else{
+        console.error(result)
+        colorSnackbar.value = 'yellow'
+        message.value = 'Nie udało się dodać użytkownika'
+        emits('create', item)
+        showSnackbar.value = true
+        closeDialog()
+      }
+    } catch(Error){
+      colorSnackbar.value = 'red'
+      message.value = 'Nie udało się dodać użytkownika'
+      emits('create', item)
+      showSnackbar.value = true
+      closeDialog()
+    }
   }
 
   const closeDialog = () => { // Function to close the dialog

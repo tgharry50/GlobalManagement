@@ -41,8 +41,8 @@ try {
     <template #item.fullName="{item}">
         {{ item.fullName }}
     </template>
-    <template #item.actions>
-        <pd></pd>
+    <template #item.actions="{item}">
+        <pd :value="item"></pd>
     </template>
     </v-data-table>
 </template>

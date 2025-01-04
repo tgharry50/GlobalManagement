@@ -22,7 +22,7 @@ export interface GlobalAppPerms extends AppPerms{
     // User
     createUser:boolean,
     updateUser:boolean,
-    canDeleteUser:boolean,
+    deleteUser:boolean,
     // Roles
     createCustomRole:boolean,
     updateCustomRole:boolean,
@@ -53,7 +53,7 @@ export interface ControlReportPerms extends AppPerms{
     canReadTask:boolean,
     // ECR
     canCreateEcr: boolean,
-    canRemoveEcr:boolean,
+    canDeleteEcr:boolean,
     canUpdateEcr:boolean,
     canReadEcr:boolean,
     // Deviation

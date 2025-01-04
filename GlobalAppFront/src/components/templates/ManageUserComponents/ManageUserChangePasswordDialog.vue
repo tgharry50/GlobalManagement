@@ -21,7 +21,7 @@
   //
   const saveItem = async () => { // Function to save the item
     try{
-      const result = await axios.post(`${base_url}/users/password/${props.uuid}`)  
+      const result = await axios.put(`${base_url}/users/password/${props.uuid}`, {"password": change_value.value})  
       if(result){
         message.value = 'Zmieniono hasło użytkownika'
         colorSnackbar.value = 'green'
@@ -44,10 +44,36 @@
       closeDialog()
     }
   }
+  const saveItem2 = async() => {
+    try{
+      const result = await axios.put(`${base_url}/users/force/${props.uuid}`)  
+      if(result){
+        message.value = 'Zresetowano hasło użytkownika'
+        colorSnackbar.value = 'green'
+        emits('change', props.uuid)
+        agreed.value = false
+        showSnackbar.value = true
+        closeDialog()
+      }  else {
+        colorSnackbar.value = 'yellow'
+        message.value = 'Nie udało się zresetować hasła użytkownika'
+        emits('change', props.uuid)
+        showSnackbar.value = true
+        closeDialog()
+      }
+    } catch(Error){
+      colorSnackbar.value = 'red'
+      message.value = 'Nie udało się zresetować hasła użytkownika'
+      emits('change', props.uuid)
+      showSnackbar.value = true
+      closeDialog()
+    }
+  }
 
   const closeDialog = () => { // Function to close the dialog
     change_value.value = null
     change_value2.value = null
+    agreed.value = false
     dialog.value = false
     emits('dialog-closed', true)
   }
@@ -89,7 +115,7 @@
                     maxlength="256"
                     required
                     :rules="[
-                      v => !v || v.length >= 8 || 'Hasło musi mieć minimum 8 znaków'
+                      v => !!v && v.length >= 8 || 'Hasło musi mieć minimum 8 znaków'
                     ]"
                   />
                   <v-text-field
@@ -99,28 +125,30 @@
                     maxlength="256"
                     required
                     :rules="[
-                      v => change_value == change_value2 || 'Hasła nie są zgodnę'
+                      v => !!v && v.length >= 8 || 'Hasło musi mieć minimum 8 znaków',
                     ]"
                   />
                 </v-form>
               </v-card-text>
               <v-card-actions>
                 <v-spacer />
-                <v-btn color="green" :disabled="(!isValid) || !!change_value || !!change_value2" @click="saveItem">Zmień</v-btn>
+                <v-btn color="green" :disabled="!isValid || change_value !== change_value2 || !change_value || !change_value2" @click="saveItem">Zmień</v-btn>
               </v-card-actions>
             </v-card>
           </v-tabs-window-item>
           <v-tabs-window-item value="2">
             <v-card flat>
-              <v-card-text>
-                <p>Hasło zostanie ustawione na podstawowe</p>
-                <v-divider />
-                <v-checkbox v-model="agreed" label="Tak, chce zmienić hasło na podstawowe" />
-              </v-card-text>
-              <v-card-actions>
-                <v-spacer />
-                <v-btn color="green" :disabled="!isValid && !agreed" @click="saveItem">Zresetuj</v-btn>
-              </v-card-actions>
+              <v-form v-model="isValid">
+                <v-card-text>
+                  <p>Hasło zostanie ustawione na podstawowe</p>
+                  <v-divider />
+                  <v-checkbox v-model="agreed" label="Tak, chce zmienić hasło na podstawowe" />
+                </v-card-text>
+                <v-card-actions>
+                  <v-spacer />
+                  <v-btn color="green" :disabled="!agreed" @click="saveItem2">Zresetuj</v-btn>
+                </v-card-actions>
+              </v-form>
             </v-card>
           </v-tabs-window-item>
         </v-tabs-window>
@@ -132,5 +160,5 @@
       </v-card-actions>
     </v-card>
   </v-dialog>
-  <Snackbar :color="colorSnackbar" :message="'Test'" :show="showSnackbar" @update:show="showSnackbar = $event" />
+  <Snackbar :color="colorSnackbar" :message="message" :show="showSnackbar" @update:show="showSnackbar = $event" />
 </template>

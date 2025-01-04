@@ -91,7 +91,7 @@ namespace GlobalManagement.Database
                 e.Property(e => e.AppUuid).IsRequired();
                 e.Property(e => e.UserUuid).IsRequired();
                 e.HasData(new AppOwners() { Id = 1, Uuid = Guid.NewGuid(), UserUuid = admin.Uuid, AppUuid = globalPregen.Uuid });
-                e.HasData(new AppOwners() { Id = 2, Uuid = Guid.NewGuid(), UserUuid = controlPregen.Uuid, AppUuid = controlPregen.Uuid });
+                e.HasData(new AppOwners() { Id = 2, Uuid = Guid.NewGuid(), UserUuid = admin.Uuid, AppUuid = controlPregen.Uuid });
 
             });
             // App options

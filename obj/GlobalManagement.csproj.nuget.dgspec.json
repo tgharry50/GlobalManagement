@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\a0h70032\\source\\repos\\GlobalManagement\\GlobalManagement\\GlobalManagement.csproj": {}
+    "C:\\Users\\mikip\\OneDrive\\Documents\\GitHub\\GlobalManagement\\GlobalManagement.csproj": {}
   },
   "projects": {
-    "C:\\Users\\a0h70032\\source\\repos\\GlobalManagement\\GlobalManagement\\GlobalManagement.csproj": {
+    "C:\\Users\\mikip\\OneDrive\\Documents\\GitHub\\GlobalManagement\\GlobalManagement.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\a0h70032\\source\\repos\\GlobalManagement\\GlobalManagement\\GlobalManagement.csproj",
+        "projectUniqueName": "C:\\Users\\mikip\\OneDrive\\Documents\\GitHub\\GlobalManagement\\GlobalManagement.csproj",
         "projectName": "GlobalManagement",
-        "projectPath": "C:\\Users\\a0h70032\\source\\repos\\GlobalManagement\\GlobalManagement\\GlobalManagement.csproj",
-        "packagesPath": "C:\\Users\\a0h70032\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\a0h70032\\source\\repos\\GlobalManagement\\GlobalManagement\\obj\\",
+        "projectPath": "C:\\Users\\mikip\\OneDrive\\Documents\\GitHub\\GlobalManagement\\GlobalManagement.csproj",
+        "packagesPath": "C:\\Users\\mikip\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\mikip\\OneDrive\\Documents\\GitHub\\GlobalManagement\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "E:\\New folder (2)\\sjared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\a0h70032\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\mikip\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,7 +26,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {

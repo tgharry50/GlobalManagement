@@ -2,10 +2,13 @@
   import mgag from './ManageGroupsAddGroup.vue' // Add group
   import mgam from './ManageGroupsAddMember.vue'; // Add member
   import mggm from './ManageGroupsGroupMenu.vue'; // Menu
+  //
+  import { getKeyFromValue } from '@/globals/globals';
   import { onMounted } from 'vue';
   import { API_BASE_URL } from '@/globals/globals';
   import { Group, GroupMember } from '@/types/Groups';
   import axios from 'axios';
+  const emits = defineEmits(['delete', 'status', 'edit'])
   //
   let isVisible = ref(false);
   // As written
@@ -21,10 +24,9 @@
       }
     } catch(Error){
       const err = Error as { status?: number };
-      if(err.status === 404){
+      if(err.status == 404){
         isVisible.value = true;
       } else{
-        console.error(err)
         isVisible.value = false;
       }
     }
@@ -50,14 +52,13 @@
         isVisibleMembers.value = true;
       } else{
         isVisibleMembers.value = false;
-        console.error(err)
       }
     }
   }
   // Default object
   let selected = ref<Group>(
     {
-      uuid: 'none',
+      uuid: '',
       name: 'Wybierz Grupę',
       description: 'Wybierz kategorie grupy, a następnie grupe by wczytać jej informacje',
       hala: '',
@@ -65,7 +66,8 @@
       section: '',
       type: 'Przykład'
     }
-  );  
+  ); 
+  let cpy = selected.value;
   // Reset let reset_selected = ref<Group>({ ...selected.value })
   // On mounted
   onMounted(async () => {
@@ -74,16 +76,12 @@
   const filter = ref('default') // filter
   const filteredItems = computed(() => { // filter method
     if(filter.value === 'default'){
-      console.log('default')
       return items.value
     } else if(filter.value === 'role'){
-      console.log('role')
       return items.value.filter(x => x.type === 'role')
     } else if(filter.value === 'section'){
-      console.log('section')
       return items.value.filter(x => x.type === 'section')
     } else if(filter.value === 'other'){
-      console.log('other')
       return items.value.filter(x => x.type === 'other')
     } else{
       return items.value
@@ -92,6 +90,10 @@
   function changeGroup(item: Group){
     selected.value = item
     fetchAllMembersOfGroup(selected.value.uuid)
+  }
+  async function reset() {
+    selected.value = cpy;
+    await fetchAll();
   }
 </script>
 <template>
@@ -215,7 +217,7 @@
     <v-col cols="9">
       <v-card>
         <v-card-title>
-          <span class="headline"> </span>
+          <span class="headline"></span>
         </v-card-title>
         <v-card-text>
           <v-row>
@@ -224,7 +226,8 @@
             </v-col>
             <!--Group Options-->
             <v-col class="text-right">
-              <mggm></mggm>
+              <mggm :uuid="selected.uuid" :current="selected" 
+              @delete="reset()" @status="reset()" @edit="reset()"></mggm> <!--Menu-->
             </v-col>
           </v-row>
           <v-divider></v-divider>
@@ -234,9 +237,9 @@
             </v-col>
           </v-row>
           <v-row>
-            <v-col v-if="selected.uuid !== 'none'">
+            <v-col v-if="selected.uuid !== ''">
               <h3>Hala: {{ selected.hala }}</h3>
-              <h3>Sekcja: {{ selected.section }}</h3>
+              <h3>Sekcja: {{ getKeyFromValue(selected.section)}}</h3>
             </v-col>
           </v-row>
           <v-row class="mb-1" v-if="selected.uuid !== 'none'">
@@ -250,7 +253,7 @@
             </v-col>
           </v-row>
           <v-divider></v-divider>
-          <v-row v-if="selected.uuid !== 'none'">
+          <v-row v-if="selected.uuid !== ''">
             <v-col>
               <v-data-table v-if="isVisibleMembers === true"
                 class="elevation-1"

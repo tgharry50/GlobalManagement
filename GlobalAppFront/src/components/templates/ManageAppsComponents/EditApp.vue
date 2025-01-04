@@ -2,39 +2,67 @@
 import { defineEmits, ref } from 'vue'
 import Snackbar from '@/components/multiuse/Snackbar.vue'
 import axios from 'axios'
-import { CreateApp } from '@/types/AppType';
+import { API_BASE_URL } from '@/globals/globals'
+import { Application } from '@/types/Applications'
 const emits = defineEmits(['edit', 'dialog-closed'])
 const props = defineProps<{
-    uuid: string,
-    item: CreateApp
+    item: Application
 }>();
 const dialog = ref(false) // Define the dialog property
 const isValid = ref(false) // Use for checking if form is Valid
 const showSnackbar = ref(false) // Use for snackbar display
 const colorSnackbar = ref('white') // Use for background color of snackbar
-const item = ref<CreateApp>({
+const message = ref('Default'); // Message text
+const item = ref<Application>({
     address: props.item.address,
     description: props.item.description,
-    name: props.item.name
+    name: props.item.name,
+    uuid: props.item.uuid,
+    isActive: props.item.isActive
 })
-const reset_item = ref<CreateApp>({...item.value});
+const reset_item = ref<Application>({...item.value});
 //
 const closeDialog = () => { // Function to close the dialog
     dialog.value = false
     item.value = reset_item.value
     emits('dialog-closed', true)
 }
-const saveItem = () => { // Function to save the item
-    emits('edit', item)
-    showSnackbar.value = true
-    closeDialog()
+const saveItem = async () => { // Function to save the item
+    const form = new FormData();
+    form.append("Address", item.value.address)
+    form.append("Description", item.value.description)
+    form.append("Name", item.value.name)
+    try{
+      const result = await axios.put(`${API_BASE_URL}/application/edit/${item.value.uuid}`, form);
+      if(result){
+        colorSnackbar.value = 'green'
+        message.value = 'Edytowano aplikacje'
+        emits('edit', item)
+        showSnackbar.value = true
+        closeDialog()
+      } else {
+        console.error(result)
+        colorSnackbar.value = 'yellow'
+        message.value = 'Nie udało się edytować aplikacji'
+        emits('edit', item)
+        showSnackbar.value = true
+        closeDialog()
+      }
+    } catch(Error){
+      console.error() //result
+      colorSnackbar.value = 'red'
+      message.value = 'Nie udało się edytować aplikacji'
+      emits('edit', item)
+      showSnackbar.value = true
+      closeDialog()
+    }
 }
 </script>
 <template>
      <v-dialog v-model="dialog" max-width="500px">
         <template #activator="{isActive, props}">
             <v-btn
-            v-tooltop:bottom="'Edytuj'"
+            v-tooltip:bottom="'Edytuj'"
             color="blue"
             class="mt-1 mb-1 me-1 ms-1"
             size="30"
@@ -96,5 +124,5 @@ const saveItem = () => { // Function to save the item
             </v-card-actions>
         </v-card>
      </v-dialog>
-     <Snackbar :color="colorSnackbar" :message="'Test'" :show="showSnackbar" @update:show="showSnackbar = $event" />
+     <Snackbar :color="colorSnackbar" :message="message" :show="showSnackbar" @update:show="showSnackbar = $event" />
 </template>

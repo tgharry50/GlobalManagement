@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import CreateApp from './CreateApp.vue';
+const emits = defineEmits(['created'])
 </script>
 <template>
         <div class="text-end">
@@ -14,7 +15,7 @@ import CreateApp from './CreateApp.vue';
                 <v-list>
                     <v-list-item>
                         <v-list-item>
-                            <CreateApp />
+                            <CreateApp @create="emits('created', true)"/>
                         </v-list-item>
                     </v-list-item>
                 </v-list>

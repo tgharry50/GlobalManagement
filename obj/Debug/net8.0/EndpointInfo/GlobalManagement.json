@@ -17,6 +17,136 @@
         }
       }
     },
+    "/application/create": {
+      "post": {
+        "tags": [
+          "Application"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "required": [
+                  "Address",
+                  "Description",
+                  "Name"
+                ],
+                "type": "object",
+                "properties": {
+                  "Name": {
+                    "type": "string"
+                  },
+                  "Description": {
+                    "type": "string"
+                  },
+                  "Address": {
+                    "type": "string"
+                  }
+                }
+              },
+              "encoding": {
+                "Name": {
+                  "style": "form"
+                },
+                "Description": {
+                  "style": "form"
+                },
+                "Address": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/application/edit/{uuid}": {
+      "put": {
+        "tags": [
+          "Application"
+        ],
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "required": [
+                  "Address",
+                  "Description",
+                  "Name"
+                ],
+                "type": "object",
+                "properties": {
+                  "Address": {
+                    "type": "string"
+                  },
+                  "Description": {
+                    "type": "string"
+                  },
+                  "Name": {
+                    "type": "string"
+                  }
+                }
+              },
+              "encoding": {
+                "Address": {
+                  "style": "form"
+                },
+                "Description": {
+                  "style": "form"
+                },
+                "Name": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/application/delete/{uuid}": {
+      "delete": {
+        "tags": [
+          "Application"
+        ],
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/group/all": {
       "get": {
         "tags": [
@@ -183,6 +313,164 @@
         }
       }
     },
+    "/group/delete/{uuid}": {
+      "delete": {
+        "tags": [
+          "Group"
+        ],
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/group/change/{uuid}": {
+      "put": {
+        "tags": [
+          "Group"
+        ],
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/group/edit/{uuid}": {
+      "put": {
+        "tags": [
+          "Group"
+        ],
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "required": [
+                  "Description",
+                  "Hala",
+                  "Name",
+                  "Section"
+                ],
+                "type": "object",
+                "properties": {
+                  "Name": {
+                    "type": "string"
+                  },
+                  "Description": {
+                    "type": "string"
+                  },
+                  "Hala": {
+                    "type": "string"
+                  },
+                  "Section": {
+                    "type": "string"
+                  }
+                }
+              },
+              "encoding": {
+                "Name": {
+                  "style": "form"
+                },
+                "Description": {
+                  "style": "form"
+                },
+                "Hala": {
+                  "style": "form"
+                },
+                "Section": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/group/member/remove/{uuid}": {
+      "delete": {
+        "tags": [
+          "Group"
+        ],
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/group/member/rank/{uuid}": {
+      "put": {
+        "tags": [
+          "Group"
+        ],
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/access/login": {
       "post": {
         "tags": [
@@ -258,7 +546,7 @@
         }
       }
     },
-    "/permission/gap": {
+    "/permission/gap/{app}": {
       "get": {
         "tags": [
           "Permission"
@@ -266,9 +554,357 @@
         "parameters": [
           {
             "name": "app",
-            "in": "query",
+            "in": "path",
+            "required": true,
             "schema": {
               "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/permission/user/{uuid}": {
+      "get": {
+        "tags": [
+          "Permission"
+        ],
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/permission/all": {
+      "get": {
+        "tags": [
+          "Permission"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/permission/create/global/{app}": {
+      "post": {
+        "tags": [
+          "Permission"
+        ],
+        "parameters": [
+          {
+            "name": "app",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "required": [
+                  "AppName",
+                  "AppUuid",
+                  "RoleName"
+                ],
+                "type": "object",
+                "properties": {
+                  "RoleName": {
+                    "type": "string"
+                  },
+                  "AppName": {
+                    "type": "string"
+                  },
+                  "AppUuid": {
+                    "type": "string",
+                    "format": "uuid"
+                  },
+                  "CanAccessGlobal": {
+                    "type": "boolean"
+                  },
+                  "CanBeEdited": {
+                    "type": "boolean"
+                  },
+                  "CreateUser": {
+                    "type": "boolean"
+                  },
+                  "UpdateUser": {
+                    "type": "boolean"
+                  },
+                  "DeleteUser": {
+                    "type": "boolean"
+                  },
+                  "CreateCustomRole": {
+                    "type": "boolean"
+                  },
+                  "UpdateCustomRole": {
+                    "type": "boolean"
+                  },
+                  "DeleteCustomRole": {
+                    "type": "boolean"
+                  },
+                  "CanCreateGroup": {
+                    "type": "boolean"
+                  },
+                  "CanDeleteGroup": {
+                    "type": "boolean"
+                  },
+                  "CanUpdateGroup": {
+                    "type": "boolean"
+                  }
+                }
+              },
+              "encoding": {
+                "RoleName": {
+                  "style": "form"
+                },
+                "AppName": {
+                  "style": "form"
+                },
+                "AppUuid": {
+                  "style": "form"
+                },
+                "CanAccessGlobal": {
+                  "style": "form"
+                },
+                "CanBeEdited": {
+                  "style": "form"
+                },
+                "CreateUser": {
+                  "style": "form"
+                },
+                "UpdateUser": {
+                  "style": "form"
+                },
+                "DeleteUser": {
+                  "style": "form"
+                },
+                "CreateCustomRole": {
+                  "style": "form"
+                },
+                "UpdateCustomRole": {
+                  "style": "form"
+                },
+                "DeleteCustomRole": {
+                  "style": "form"
+                },
+                "CanCreateGroup": {
+                  "style": "form"
+                },
+                "CanDeleteGroup": {
+                  "style": "form"
+                },
+                "CanUpdateGroup": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/permission/create/control/{app}": {
+      "post": {
+        "tags": [
+          "Permission"
+        ],
+        "parameters": [
+          {
+            "name": "app",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "required": [
+                  "RoleName"
+                ],
+                "type": "object",
+                "properties": {
+                  "RoleName": {
+                    "type": "string"
+                  },
+                  "CanCreateReference": {
+                    "type": "boolean"
+                  },
+                  "CanDeleteReference": {
+                    "type": "boolean"
+                  },
+                  "CanUpdateReference": {
+                    "type": "boolean"
+                  },
+                  "CanReadReference": {
+                    "type": "boolean"
+                  },
+                  "CanCreateIntervention": {
+                    "type": "boolean"
+                  },
+                  "CanDeleteIntervention": {
+                    "type": "boolean"
+                  },
+                  "CanUpdateIntervention": {
+                    "type": "boolean"
+                  },
+                  "CanReadIntervention": {
+                    "type": "boolean"
+                  },
+                  "CanCreateTask": {
+                    "type": "boolean"
+                  },
+                  "CanDeleteTask": {
+                    "type": "boolean"
+                  },
+                  "CanUpdateTask": {
+                    "type": "boolean"
+                  },
+                  "CanReadTask": {
+                    "type": "boolean"
+                  },
+                  "CanCreateEcr": {
+                    "type": "boolean"
+                  },
+                  "CanDeleteEcr": {
+                    "type": "boolean"
+                  },
+                  "CanUpdateEcr": {
+                    "type": "boolean"
+                  },
+                  "CanReadEcr": {
+                    "type": "boolean"
+                  },
+                  "CanCreateDeviation": {
+                    "type": "boolean"
+                  },
+                  "CanDeleteDeviation": {
+                    "type": "boolean"
+                  },
+                  "CanUpdateDeviation": {
+                    "type": "boolean"
+                  },
+                  "CanReadDeviation": {
+                    "type": "boolean"
+                  }
+                }
+              },
+              "encoding": {
+                "RoleName": {
+                  "style": "form"
+                },
+                "CanCreateReference": {
+                  "style": "form"
+                },
+                "CanDeleteReference": {
+                  "style": "form"
+                },
+                "CanUpdateReference": {
+                  "style": "form"
+                },
+                "CanReadReference": {
+                  "style": "form"
+                },
+                "CanCreateIntervention": {
+                  "style": "form"
+                },
+                "CanDeleteIntervention": {
+                  "style": "form"
+                },
+                "CanUpdateIntervention": {
+                  "style": "form"
+                },
+                "CanReadIntervention": {
+                  "style": "form"
+                },
+                "CanCreateTask": {
+                  "style": "form"
+                },
+                "CanDeleteTask": {
+                  "style": "form"
+                },
+                "CanUpdateTask": {
+                  "style": "form"
+                },
+                "CanReadTask": {
+                  "style": "form"
+                },
+                "CanCreateEcr": {
+                  "style": "form"
+                },
+                "CanDeleteEcr": {
+                  "style": "form"
+                },
+                "CanUpdateEcr": {
+                  "style": "form"
+                },
+                "CanReadEcr": {
+                  "style": "form"
+                },
+                "CanCreateDeviation": {
+                  "style": "form"
+                },
+                "CanDeleteDeviation": {
+                  "style": "form"
+                },
+                "CanUpdateDeviation": {
+                  "style": "form"
+                },
+                "CanReadDeviation": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/permission/delete/{uuid}": {
+      "delete": {
+        "tags": [
+          "Permission"
+        ],
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
             }
           }
         ],
@@ -284,35 +920,6 @@
         "tags": [
           "User"
         ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "User"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateUserdto"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateUserdto"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateUserdto"
-              }
-            }
-          }
-        },
         "responses": {
           "200": {
             "description": "OK"
@@ -336,6 +943,37 @@
             }
           }
         ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/users/create": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUserdto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUserdto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUserdto"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "OK"
@@ -383,19 +1021,58 @@
         ],
         "requestBody": {
           "content": {
-            "application/json": {
+            "multipart/form-data": {
               "schema": {
-                "$ref": "#/components/schemas/UpdateUserBasicdto"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateUserBasicdto"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateUserBasicdto"
+                "required": [
+                  "Card",
+                  "Email",
+                  "FirstName",
+                  "LastName",
+                  "Pin",
+                  "UserName"
+                ],
+                "type": "object",
+                "properties": {
+                  "UserName": {
+                    "type": "string"
+                  },
+                  "FirstName": {
+                    "type": "string"
+                  },
+                  "LastName": {
+                    "type": "string"
+                  },
+                  "Email": {
+                    "type": "string"
+                  },
+                  "Card": {
+                    "type": "string"
+                  },
+                  "Pin": {
+                    "type": "integer",
+                    "format": "int32"
+                  }
+                }
+              },
+              "encoding": {
+                "UserName": {
+                  "style": "form"
+                },
+                "FirstName": {
+                  "style": "form"
+                },
+                "LastName": {
+                  "style": "form"
+                },
+                "Email": {
+                  "style": "form"
+                },
+                "Card": {
+                  "style": "form"
+                },
+                "Pin": {
+                  "style": "form"
+                }
               }
             }
           }
@@ -449,7 +1126,7 @@
         }
       }
     },
-    "/users/force": {
+    "/users/force/{uuid}": {
       "put": {
         "tags": [
           "User"
@@ -457,7 +1134,8 @@
         "parameters": [
           {
             "name": "uuid",
-            "in": "query",
+            "in": "path",
+            "required": true,
             "schema": {
               "type": "string",
               "format": "uuid"
@@ -552,8 +1230,8 @@
             "nullable": true
           },
           "pin": {
-            "type": "integer",
-            "format": "int32"
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -572,44 +1250,6 @@
           "_password": {
             "minLength": 1,
             "type": "string"
-          }
-        },
-        "additionalProperties": false
-      },
-      "UpdateUserBasicdto": {
-        "required": [
-          "card",
-          "email",
-          "firstName",
-          "lastName",
-          "pin",
-          "userName"
-        ],
-        "type": "object",
-        "properties": {
-          "userName": {
-            "type": "string",
-            "nullable": true
-          },
-          "firstName": {
-            "type": "string",
-            "nullable": true
-          },
-          "lastName": {
-            "type": "string",
-            "nullable": true
-          },
-          "email": {
-            "type": "string",
-            "nullable": true
-          },
-          "card": {
-            "type": "string",
-            "nullable": true
-          },
-          "pin": {
-            "type": "integer",
-            "format": "int32"
           }
         },
         "additionalProperties": false

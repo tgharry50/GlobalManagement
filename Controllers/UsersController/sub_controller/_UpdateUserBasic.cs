@@ -19,10 +19,11 @@ namespace GlobalManagement.Controllers.UsersController.sub_controller
                 {
                     return NotFound();
                 }
-                user.UserName = dto.UserName;
-                user.FirstName = dto.FirstName;
-                user.LastName = dto.LastName;
-                user.Email = dto.Email;
+                user.UserName = dto.UserName.Trim();
+                user.FirstName = dto.FirstName.Trim();
+                user.LastName = dto.LastName.Trim();
+                user.FullName = $"{dto.FirstName.Trim()} {dto.LastName.Trim()}";
+                user.Email = dto.Email.Trim();
                 user.Card = dto.Card;
                 user.Pin = dto.Pin;
                 await Context.SaveChangesAsync();

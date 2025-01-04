@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace GlobalManagement.Migrations
 {
     /// <inheritdoc />
-    public partial class init : Migration
+    public partial class init_1 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -294,8 +294,8 @@ namespace GlobalManagement.Migrations
                 columns: new[] { "Id", "Address", "CreatedAt", "Application Description", "IsActive", "Application Name", "UpdatedAt", "Uuid" },
                 values: new object[,]
                 {
-                    { 1, "10.35.92.163:3001", new DateTime(2024, 12, 18, 8, 41, 10, 206, DateTimeKind.Local).AddTicks(8820), "Application used to manage other applications and permission", true, "GlobalApp", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new Guid("899960d1-f610-4c7d-878e-b505b5fe7209") },
-                    { 2, "10.35.92.163:2999", new DateTime(2024, 12, 18, 8, 41, 10, 206, DateTimeKind.Local).AddTicks(8883), "Application used to manage reference, ecr, deviation", true, "ControlReport", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new Guid("37f9aec4-3090-473d-a771-159a4bee8c47") }
+                    { 1, "10.35.92.163:3001", new DateTime(2024, 12, 30, 7, 49, 17, 733, DateTimeKind.Local).AddTicks(9259), "Application used to manage other applications and permission", true, "GlobalApp", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new Guid("d0f33472-0963-4b60-8d51-a97d4453df34") },
+                    { 2, "10.35.92.163:2999", new DateTime(2024, 12, 30, 7, 49, 17, 733, DateTimeKind.Local).AddTicks(9335), "Application used to manage reference, ecr, deviation", true, "ControlReport", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new Guid("44347d45-ac92-4d70-a386-c52c64e9c2c8") }
                 });
 
             migrationBuilder.InsertData(
@@ -303,8 +303,8 @@ namespace GlobalManagement.Migrations
                 columns: new[] { "Id", "AppUuid", "Uuid" },
                 values: new object[,]
                 {
-                    { 1, new Guid("899960d1-f610-4c7d-878e-b505b5fe7209"), new Guid("77847e48-76c5-498f-8b96-615323e5b66b") },
-                    { 2, new Guid("37f9aec4-3090-473d-a771-159a4bee8c47"), new Guid("b43613ac-688a-4daf-b00a-b7a832a24d85") }
+                    { 1, new Guid("d0f33472-0963-4b60-8d51-a97d4453df34"), new Guid("eb6728ed-f4fe-4f1c-b9ed-e8e1c4d71680") },
+                    { 2, new Guid("44347d45-ac92-4d70-a386-c52c64e9c2c8"), new Guid("52058e06-9726-4c46-a7e6-480e4057d7af") }
                 });
 
             migrationBuilder.InsertData(
@@ -312,8 +312,8 @@ namespace GlobalManagement.Migrations
                 columns: new[] { "Id", "AppUuid", "UserUuid", "Uuid" },
                 values: new object[,]
                 {
-                    { 1, new Guid("899960d1-f610-4c7d-878e-b505b5fe7209"), new Guid("231811de-77b8-4637-9118-c6544126b68b"), new Guid("9daa8368-c34d-491f-bca9-9e8171013f74") },
-                    { 2, new Guid("37f9aec4-3090-473d-a771-159a4bee8c47"), new Guid("37f9aec4-3090-473d-a771-159a4bee8c47"), new Guid("3be46db9-8644-4007-addb-b92f66743b98") }
+                    { 1, new Guid("d0f33472-0963-4b60-8d51-a97d4453df34"), new Guid("0b96dab2-c96c-4125-a244-c3beb32ad565"), new Guid("2446c368-a36d-4576-a9ec-6829598df260") },
+                    { 2, new Guid("44347d45-ac92-4d70-a386-c52c64e9c2c8"), new Guid("44347d45-ac92-4d70-a386-c52c64e9c2c8"), new Guid("88478779-595d-42b4-9b55-0bb88efac77b") }
                 });
 
             migrationBuilder.InsertData(
@@ -321,8 +321,8 @@ namespace GlobalManagement.Migrations
                 columns: new[] { "Id", "AppName", "AppUuid", "CreatedAt", "Role", "RoleUuid", "UUID", "UpdatedAt", "UserUuid" },
                 values: new object[,]
                 {
-                    { 1, "GlobalApp", new Guid("899960d1-f610-4c7d-878e-b505b5fe7209"), new DateTime(2024, 12, 18, 8, 41, 10, 379, DateTimeKind.Local).AddTicks(2704), "Administrator", new Guid("02cc50eb-c871-41e0-87b0-b44c8d4a00d5"), new Guid("f0d6b5ef-b86a-4ddf-ae05-fe20fbf23577"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new Guid("231811de-77b8-4637-9118-c6544126b68b") },
-                    { 2, "ControlReport", new Guid("37f9aec4-3090-473d-a771-159a4bee8c47"), new DateTime(2024, 12, 18, 8, 41, 10, 379, DateTimeKind.Local).AddTicks(2784), "Administrator", new Guid("e12d1ec2-9904-40aa-be78-748198ba8a79"), new Guid("91e1a274-4c7c-4cb8-b0f3-7eb3e7cb8035"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new Guid("231811de-77b8-4637-9118-c6544126b68b") }
+                    { 1, "GlobalApp", new Guid("d0f33472-0963-4b60-8d51-a97d4453df34"), new DateTime(2024, 12, 30, 7, 49, 18, 55, DateTimeKind.Local).AddTicks(7546), "Administrator", new Guid("beb7f4dd-5041-43b9-bd02-2d58d923b5cd"), new Guid("ccc2546e-a565-40fa-8fe2-a64a987c63ce"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new Guid("0b96dab2-c96c-4125-a244-c3beb32ad565") },
+                    { 2, "ControlReport", new Guid("44347d45-ac92-4d70-a386-c52c64e9c2c8"), new DateTime(2024, 12, 30, 7, 49, 18, 55, DateTimeKind.Local).AddTicks(7682), "Administrator", new Guid("b0c6af3e-37d6-443c-a9f5-3160acce12e1"), new Guid("d1ea6b1d-d801-4275-8dc7-5e3986db4981"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new Guid("0b96dab2-c96c-4125-a244-c3beb32ad565") }
                 });
 
             migrationBuilder.InsertData(
@@ -330,8 +330,8 @@ namespace GlobalManagement.Migrations
                 columns: new[] { "Id", "AppName", "AppUuid", "CanBeEdited", "CanCreateDeviation", "CanCreateEcr", "CanCreateIntervention", "CanCreateReference", "CanCreateTask", "CanDeleteDeviation", "CanDeleteEcr", "CanDeleteIntervention", "CanDeleteReference", "CanDeleteTask", "CanReadDeviation", "CanReadEcr", "CanReadIntervention", "CanReadReference", "CanReadTask", "CanUpdateDeviation", "CanUpdateEcr", "CanUpdateIntervention", "CanUpdateReference", "CanUpdateTask", "CanUseApp", "HasAllPrivelage", "RoleName", "UUID" },
                 values: new object[,]
                 {
-                    { 1, "ControlReport", new Guid("37f9aec4-3090-473d-a771-159a4bee8c47"), false, true, true, true, true, true, false, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, "Administrator", new Guid("e12d1ec2-9904-40aa-be78-748198ba8a79") },
-                    { 2, "ControlReport", new Guid("37f9aec4-3090-473d-a771-159a4bee8c47"), false, false, false, false, false, false, false, false, false, false, false, true, true, true, true, true, false, false, false, false, false, true, false, "User", new Guid("896a0c71-e219-47aa-8b99-78090f1bcffa") }
+                    { 1, "ControlReport", new Guid("44347d45-ac92-4d70-a386-c52c64e9c2c8"), false, true, true, true, true, true, false, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, "Administrator", new Guid("b0c6af3e-37d6-443c-a9f5-3160acce12e1") },
+                    { 2, "ControlReport", new Guid("44347d45-ac92-4d70-a386-c52c64e9c2c8"), false, false, false, false, false, false, false, false, false, false, false, true, true, true, true, true, false, false, false, false, false, true, false, "User", new Guid("8c465a4b-4fdf-49f0-a8ab-acea04fe0083") }
                 });
 
             migrationBuilder.InsertData(
@@ -339,14 +339,14 @@ namespace GlobalManagement.Migrations
                 columns: new[] { "Id", "AppName", "AppUuid", "CanAccessGlobal", "CanBeEdited", "CanCreateGroup", "CanDeleteGroup", "CanUpdateGroup", "CreateCustomRole", "CreateUser", "DeleteCustomRole", "DeleteUser", "RoleName", "UpdateCustomRole", "UpdateUser", "Uuid" },
                 values: new object[,]
                 {
-                    { 1, "GlobalApp", new Guid("899960d1-f610-4c7d-878e-b505b5fe7209"), true, false, true, true, true, true, true, true, true, "Administrator", true, true, new Guid("02cc50eb-c871-41e0-87b0-b44c8d4a00d5") },
-                    { 2, "GlobalApp", new Guid("899960d1-f610-4c7d-878e-b505b5fe7209"), false, false, false, false, false, false, false, false, false, "User", false, false, new Guid("cddb4738-26c8-4792-9950-e250dcde45b7") }
+                    { 1, "GlobalApp", new Guid("d0f33472-0963-4b60-8d51-a97d4453df34"), true, false, true, true, true, true, true, true, true, "Administrator", true, true, new Guid("beb7f4dd-5041-43b9-bd02-2d58d923b5cd") },
+                    { 2, "GlobalApp", new Guid("d0f33472-0963-4b60-8d51-a97d4453df34"), false, false, false, false, false, false, false, false, false, "User", false, false, new Guid("5febe93f-31e8-4426-ae26-52add2e4687e") }
                 });
 
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "Id", "Card", "CreatedDate", "Email", "FirstName", "FullName", "Image", "IsActive", "LastName", "LastUpdatedDate", "Password", "Pin", "UserName", "Uuid" },
-                values: new object[] { 1, "1234", new DateTime(2024, 12, 18, 8, 41, 10, 207, DateTimeKind.Local).AddTicks(1389), "zyw2.automatyzacja@gmail.com", "admin", "admin admin", null, true, "admin", null, "$2a$11$vY11dmT920AhDeXUW.bLW.hlkHu3br/vwj.Ayu28GMouE9/XoFACu", 1234, "admin", new Guid("231811de-77b8-4637-9118-c6544126b68b") });
+                values: new object[] { 1, "1234", new DateTime(2024, 12, 30, 7, 49, 17, 734, DateTimeKind.Local).AddTicks(1778), "zyw2.automatyzacja@gmail.com", "admin", "admin admin", null, true, "admin", null, "$2a$11$cuRtcJK8eaQURysLBfvsNeaXQ5zz5I2TQZBtZ0nuX54OjejIcl7s.", 1234, "admin", new Guid("0b96dab2-c96c-4125-a244-c3beb32ad565") });
         }
 
         /// <inheritdoc />

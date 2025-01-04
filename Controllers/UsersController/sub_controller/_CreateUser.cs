@@ -17,14 +17,14 @@ namespace GlobalManagement.Controllers.UsersController.sub_controller
                 User user = new User
                 {
                     Uuid = Guid.NewGuid(),
-                    UserName = dto.UserName,
-                    Password = dto.Password,
-                    FirstName = dto.FirstName,
-                    LastName = dto.LastName,
-                    FullName = dto.FullName,
-                    Email = dto.Email,
+                    UserName = dto.UserName.Trim(),
+                    Password = dto.Password.Trim(),
+                    FirstName = dto.FirstName.Trim(),
+                    LastName = dto.LastName.Trim(),
+                    FullName = $"{dto.FirstName.Trim()} {dto.LastName.Trim()}",
+                    Email = dto.Email.Trim(),
                     Card = dto.Card,
-                    Pin = dto.Pin,
+                    Pin = int.Parse(dto.Pin),
                     IsActive = true,
                     CreatedDate = DateTime.Now,
                 };

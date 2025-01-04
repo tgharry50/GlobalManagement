@@ -1,8 +1,14 @@
 <script setup lang="ts">
 const props = defineProps<{
-uuid: string
+uuid: string,
+current: Group
 }>()
 import mgdg from './ManageGroupsDeleteGroup.vue';
+import mgcgs from './ManageGroupsChangeGroupStatus.vue';
+import mgeg from './ManageGroupsEditGroup.vue';
+import { Group } from '@/types/Groups';
+const emits = defineEmits(['delete', 'status', 'edit'])
+
 </script>
 
 <template>
@@ -14,15 +20,17 @@ import mgdg from './ManageGroupsDeleteGroup.vue';
         <v-list>
             <!--Edit-->
             <v-list-item>
-                Edytuj grupę
+                <mgeg :uuid="props.uuid" :current="{Description: props.current.description, Hala: props.current.hala, Name: props.current.name, Section: props.current.section}"
+                @edit="emits('edit', true)"
+                ></mgeg>
             </v-list-item>
             <!--Change Status-->
             <v-list-item>
-                Wyłącz/Włącz grupę
+                <mgcgs :uuid="props.uuid" @status="emits('status', true)"></mgcgs>
             </v-list-item>
             <!--DELETE-->
             <v-list-item>
-                <mgdg :uuid="props.uuid"></mgdg>
+                <mgdg :uuid="props.uuid" @delete="emits('delete', true)"></mgdg> 
             </v-list-item>
         </v-list>
     </v-menu>

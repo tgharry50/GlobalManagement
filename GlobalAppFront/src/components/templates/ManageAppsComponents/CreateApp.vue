@@ -2,29 +2,57 @@
 import { defineEmits, ref } from 'vue';
 import Snackbar from '@/components/multiuse/Snackbar.vue';
 import axios from 'axios';
-import { CreateApp } from '@/types/AppType';
+import { Application } from '@/types/Applications';
+import { API_BASE_URL } from '@/globals/globals';
 const emits = defineEmits(['create', 'dialog-closed'])
 const dialog = ref(false) // Define the dialog property
 const isValid = ref(false) // Use for checking if form is Valid
 const showSnackbar = ref(false) // Use for snackbar display
 const colorSnackbar = ref('white') // Use for background color of snackbar
-const item = ref<CreateApp>({
-    name: '',
+const message = ref('Default'); // Message text
+const item = ref<Application>({
+    isActive: false,
     address: '',
-    description: ''
+    description: '',
+    name: '',
+    uuid: ''
 })
-const reset_item = ref<CreateApp>({...item.value});
+const reset_item = ref<Application>({...item.value});
 //
 const closeDialog = () => { // Function to close the dialog
     dialog.value = false
     item.value = { ...reset_item.value }
     emits('dialog-closed', true)
 }
-const saveItem = () => { // Function to save the item
-    showSnackbar.value = true
-    closeDialog()
-    item.value = { ...reset_item.value }
-    emits('create', item)
+const saveItem = async () => { // Function to save the item
+    const form = new FormData();
+    form.append("Address", item.value.address)
+    form.append("Description", item.value.description)
+    form.append("Name", item.value.name)
+    try{
+      const result = await axios.post(`${API_BASE_URL}/application/create`, form);
+      if(result){
+        colorSnackbar.value = 'green'
+        message.value = 'Edytowano aplikacje'
+        emits('create', item)
+        showSnackbar.value = true
+        closeDialog()
+      } else {
+        console.error(result)
+        colorSnackbar.value = 'yellow'
+        message.value = 'Nie udało się edytować aplikacji'
+        emits('create', item)
+        showSnackbar.value = true
+        closeDialog()
+      }
+    } catch(Error){
+      console.error() //result
+      colorSnackbar.value = 'red'
+      message.value = 'Nie udało się edytować aplikacji'
+      emits('create', item)
+      showSnackbar.value = true
+      closeDialog()
+    }
 }
 </script>
 <template>

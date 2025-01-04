@@ -27,7 +27,7 @@ namespace GlobalManagement.Controllers.UsersController
             return await gu._Get(uuid);
         }
         // POST: Create user
-        [HttpPost()]
+        [HttpPost("create")]
         public async Task<IActionResult> CreateUser(CreateUserdto dto)
         {
             CreateUser cu = new(Context);
@@ -44,7 +44,7 @@ namespace GlobalManagement.Controllers.UsersController
         //
         // UPDATE: Update user Basic < DONE
         [HttpPut("edit/{uuid}")]
-        public async Task<IActionResult> UpdateUserBasic(Guid uuid, UpdateUserBasicdto dto)
+        public async Task<IActionResult> UpdateUserBasic(Guid uuid, [FromForm] UpdateUserBasicdto dto)
         {
             UpdateUserBasic uub = new(Context);
             return await uub._Update(uuid, dto);
@@ -57,7 +57,7 @@ namespace GlobalManagement.Controllers.UsersController
             return await uup._Update(uuid, dto);
         }
         // UPDATE: Force update user password
-        [HttpPut("force")]
+        [HttpPut("force/{uuid}")]
         public async Task<IActionResult> ForceUpdateUserPassword(Guid uuid)
         {
             ForceUpdateUserPassword fuup = new(Context);

@@ -9,6 +9,6 @@
         public string? FullName { get; set; }
         public string Email { get; set; }
         public string? Card { get; set; }
-        public int Pin { get; set; }
+        public string Pin { get; set; }
     }
 }

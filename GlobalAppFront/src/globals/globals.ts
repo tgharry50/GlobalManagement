@@ -22,4 +22,7 @@ export const halls: { key: string, value: string}[] = [
     {key: "Zewnątrz", value: "Zewnątrz"},
 ]
 
-
+export function getKeyFromValue(value: string): string | undefined {
+    const section = sections.find(section => section.value === value);
+    return section ? section.key : undefined;
+}

@@ -99,23 +99,23 @@ namespace GlobalManagement.Migrations
                         {
                             Id = 1,
                             Address = "10.35.92.163:3001",
-                            CreatedAt = new DateTime(2024, 12, 18, 8, 41, 10, 206, DateTimeKind.Local).AddTicks(8820),
+                            CreatedAt = new DateTime(2024, 12, 30, 7, 49, 17, 733, DateTimeKind.Local).AddTicks(9259),
                             Description = "Application used to manage other applications and permission",
                             IsActive = true,
                             Name = "GlobalApp",
                             UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Uuid = new Guid("899960d1-f610-4c7d-878e-b505b5fe7209")
+                            Uuid = new Guid("d0f33472-0963-4b60-8d51-a97d4453df34")
                         },
                         new
                         {
                             Id = 2,
                             Address = "10.35.92.163:2999",
-                            CreatedAt = new DateTime(2024, 12, 18, 8, 41, 10, 206, DateTimeKind.Local).AddTicks(8883),
+                            CreatedAt = new DateTime(2024, 12, 30, 7, 49, 17, 733, DateTimeKind.Local).AddTicks(9335),
                             Description = "Application used to manage reference, ecr, deviation",
                             IsActive = true,
                             Name = "ControlReport",
                             UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Uuid = new Guid("37f9aec4-3090-473d-a771-159a4bee8c47")
+                            Uuid = new Guid("44347d45-ac92-4d70-a386-c52c64e9c2c8")
                         });
                 });
 
@@ -143,14 +143,14 @@ namespace GlobalManagement.Migrations
                         new
                         {
                             Id = 1,
-                            AppUuid = new Guid("899960d1-f610-4c7d-878e-b505b5fe7209"),
-                            Uuid = new Guid("77847e48-76c5-498f-8b96-615323e5b66b")
+                            AppUuid = new Guid("d0f33472-0963-4b60-8d51-a97d4453df34"),
+                            Uuid = new Guid("eb6728ed-f4fe-4f1c-b9ed-e8e1c4d71680")
                         },
                         new
                         {
                             Id = 2,
-                            AppUuid = new Guid("37f9aec4-3090-473d-a771-159a4bee8c47"),
-                            Uuid = new Guid("b43613ac-688a-4daf-b00a-b7a832a24d85")
+                            AppUuid = new Guid("44347d45-ac92-4d70-a386-c52c64e9c2c8"),
+                            Uuid = new Guid("52058e06-9726-4c46-a7e6-480e4057d7af")
                         });
                 });
 
@@ -181,16 +181,16 @@ namespace GlobalManagement.Migrations
                         new
                         {
                             Id = 1,
-                            AppUuid = new Guid("899960d1-f610-4c7d-878e-b505b5fe7209"),
-                            UserUuid = new Guid("231811de-77b8-4637-9118-c6544126b68b"),
-                            Uuid = new Guid("9daa8368-c34d-491f-bca9-9e8171013f74")
+                            AppUuid = new Guid("d0f33472-0963-4b60-8d51-a97d4453df34"),
+                            UserUuid = new Guid("0b96dab2-c96c-4125-a244-c3beb32ad565"),
+                            Uuid = new Guid("2446c368-a36d-4576-a9ec-6829598df260")
                         },
                         new
                         {
                             Id = 2,
-                            AppUuid = new Guid("37f9aec4-3090-473d-a771-159a4bee8c47"),
-                            UserUuid = new Guid("37f9aec4-3090-473d-a771-159a4bee8c47"),
-                            Uuid = new Guid("3be46db9-8644-4007-addb-b92f66743b98")
+                            AppUuid = new Guid("44347d45-ac92-4d70-a386-c52c64e9c2c8"),
+                            UserUuid = new Guid("44347d45-ac92-4d70-a386-c52c64e9c2c8"),
+                            Uuid = new Guid("88478779-595d-42b4-9b55-0bb88efac77b")
                         });
                 });
 
@@ -430,25 +430,25 @@ namespace GlobalManagement.Migrations
                         {
                             Id = 1,
                             AppName = "GlobalApp",
-                            AppUuid = new Guid("899960d1-f610-4c7d-878e-b505b5fe7209"),
-                            CreatedAt = new DateTime(2024, 12, 18, 8, 41, 10, 379, DateTimeKind.Local).AddTicks(2704),
+                            AppUuid = new Guid("d0f33472-0963-4b60-8d51-a97d4453df34"),
+                            CreatedAt = new DateTime(2024, 12, 30, 7, 49, 18, 55, DateTimeKind.Local).AddTicks(7546),
                             Role = "Administrator",
-                            RoleUuid = new Guid("02cc50eb-c871-41e0-87b0-b44c8d4a00d5"),
-                            UUID = new Guid("f0d6b5ef-b86a-4ddf-ae05-fe20fbf23577"),
+                            RoleUuid = new Guid("beb7f4dd-5041-43b9-bd02-2d58d923b5cd"),
+                            UUID = new Guid("ccc2546e-a565-40fa-8fe2-a64a987c63ce"),
                             UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            UserUuid = new Guid("231811de-77b8-4637-9118-c6544126b68b")
+                            UserUuid = new Guid("0b96dab2-c96c-4125-a244-c3beb32ad565")
                         },
                         new
                         {
                             Id = 2,
                             AppName = "ControlReport",
-                            AppUuid = new Guid("37f9aec4-3090-473d-a771-159a4bee8c47"),
-                            CreatedAt = new DateTime(2024, 12, 18, 8, 41, 10, 379, DateTimeKind.Local).AddTicks(2784),
+                            AppUuid = new Guid("44347d45-ac92-4d70-a386-c52c64e9c2c8"),
+                            CreatedAt = new DateTime(2024, 12, 30, 7, 49, 18, 55, DateTimeKind.Local).AddTicks(7682),
                             Role = "Administrator",
-                            RoleUuid = new Guid("e12d1ec2-9904-40aa-be78-748198ba8a79"),
-                            UUID = new Guid("91e1a274-4c7c-4cb8-b0f3-7eb3e7cb8035"),
+                            RoleUuid = new Guid("b0c6af3e-37d6-443c-a9f5-3160acce12e1"),
+                            UUID = new Guid("d1ea6b1d-d801-4275-8dc7-5e3986db4981"),
                             UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            UserUuid = new Guid("231811de-77b8-4637-9118-c6544126b68b")
+                            UserUuid = new Guid("0b96dab2-c96c-4125-a244-c3beb32ad565")
                         });
                 });
 
@@ -554,7 +554,7 @@ namespace GlobalManagement.Migrations
                         {
                             Id = 1,
                             AppName = "ControlReport",
-                            AppUuid = new Guid("37f9aec4-3090-473d-a771-159a4bee8c47"),
+                            AppUuid = new Guid("44347d45-ac92-4d70-a386-c52c64e9c2c8"),
                             CanBeEdited = false,
                             CanCreateDeviation = true,
                             CanCreateEcr = true,
@@ -579,13 +579,13 @@ namespace GlobalManagement.Migrations
                             CanUseApp = true,
                             HasAllPrivelage = true,
                             RoleName = "Administrator",
-                            UUID = new Guid("e12d1ec2-9904-40aa-be78-748198ba8a79")
+                            UUID = new Guid("b0c6af3e-37d6-443c-a9f5-3160acce12e1")
                         },
                         new
                         {
                             Id = 2,
                             AppName = "ControlReport",
-                            AppUuid = new Guid("37f9aec4-3090-473d-a771-159a4bee8c47"),
+                            AppUuid = new Guid("44347d45-ac92-4d70-a386-c52c64e9c2c8"),
                             CanBeEdited = false,
                             CanCreateDeviation = false,
                             CanCreateEcr = false,
@@ -610,7 +610,7 @@ namespace GlobalManagement.Migrations
                             CanUseApp = true,
                             HasAllPrivelage = false,
                             RoleName = "User",
-                            UUID = new Guid("896a0c71-e219-47aa-8b99-78090f1bcffa")
+                            UUID = new Guid("8c465a4b-4fdf-49f0-a8ab-acea04fe0083")
                         });
                 });
 
@@ -680,7 +680,7 @@ namespace GlobalManagement.Migrations
                         {
                             Id = 1,
                             AppName = "GlobalApp",
-                            AppUuid = new Guid("899960d1-f610-4c7d-878e-b505b5fe7209"),
+                            AppUuid = new Guid("d0f33472-0963-4b60-8d51-a97d4453df34"),
                             CanAccessGlobal = true,
                             CanBeEdited = false,
                             CanCreateGroup = true,
@@ -693,13 +693,13 @@ namespace GlobalManagement.Migrations
                             RoleName = "Administrator",
                             UpdateCustomRole = true,
                             UpdateUser = true,
-                            Uuid = new Guid("02cc50eb-c871-41e0-87b0-b44c8d4a00d5")
+                            Uuid = new Guid("beb7f4dd-5041-43b9-bd02-2d58d923b5cd")
                         },
                         new
                         {
                             Id = 2,
                             AppName = "GlobalApp",
-                            AppUuid = new Guid("899960d1-f610-4c7d-878e-b505b5fe7209"),
+                            AppUuid = new Guid("d0f33472-0963-4b60-8d51-a97d4453df34"),
                             CanAccessGlobal = false,
                             CanBeEdited = false,
                             CanCreateGroup = false,
@@ -712,7 +712,7 @@ namespace GlobalManagement.Migrations
                             RoleName = "User",
                             UpdateCustomRole = false,
                             UpdateUser = false,
-                            Uuid = new Guid("cddb4738-26c8-4792-9950-e250dcde45b7")
+                            Uuid = new Guid("5febe93f-31e8-4426-ae26-52add2e4687e")
                         });
                 });
 
@@ -788,16 +788,16 @@ namespace GlobalManagement.Migrations
                         {
                             Id = 1,
                             Card = "1234",
-                            CreatedDate = new DateTime(2024, 12, 18, 8, 41, 10, 207, DateTimeKind.Local).AddTicks(1389),
+                            CreatedDate = new DateTime(2024, 12, 30, 7, 49, 17, 734, DateTimeKind.Local).AddTicks(1778),
                             Email = "zyw2.automatyzacja@gmail.com",
                             FirstName = "admin",
                             FullName = "admin admin",
                             IsActive = true,
                             LastName = "admin",
-                            Password = "$2a$11$vY11dmT920AhDeXUW.bLW.hlkHu3br/vwj.Ayu28GMouE9/XoFACu",
+                            Password = "$2a$11$cuRtcJK8eaQURysLBfvsNeaXQ5zz5I2TQZBtZ0nuX54OjejIcl7s.",
                             Pin = 1234,
                             UserName = "admin",
-                            Uuid = new Guid("231811de-77b8-4637-9118-c6544126b68b")
+                            Uuid = new Guid("0b96dab2-c96c-4125-a244-c3beb32ad565")
                         });
                 });
 #pragma warning restore 612, 618

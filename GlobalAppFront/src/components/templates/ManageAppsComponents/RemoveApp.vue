@@ -2,6 +2,8 @@
 import { defineEmits, defineProps, ref } from 'vue'
 import axios from 'axios'
 import Snackbar from '@/components/multiuse/Snackbar.vue'
+import { API_BASE_URL } from '@/globals/globals'
+
 const emits = defineEmits(['delete', 'dialog-closed']) // Emits
 const props = defineProps<{
 uuid: string,
@@ -11,13 +13,35 @@ const agreed = ref(false)
 const dialog = ref(false) // Define the dialog property
 const showSnackbar = ref(false) // Use for snackbar display
 const colorSnackbar = ref('white') // Use for background color of snackbar
+const message = ref('Default'); // Message text
 //
 // Function
-const saveItem = () => { // Function to save the item
-    emits('delete', props.uuid)
-    agreed.value = false
-    showSnackbar.value = true
-    closeDialog()
+const saveItems = async () => { // Function to save the item
+    console.log('error')
+    try{
+      const result = await axios.delete(`${API_BASE_URL}/application/delete/${props.uuid}`);
+      if(result){
+        message.value = 'Usunięto aplikacje'
+        colorSnackbar.value = 'green'
+        emits('delete', true)
+        showSnackbar.value = true
+        closeDialog()
+      } else {
+        message.value = 'Usunięto aplikacje'
+        console.error(result)
+        colorSnackbar.value = 'yellow'
+        emits('delete', true)
+        showSnackbar.value = true
+        closeDialog()
+      }
+    } catch(Error){
+      console.error() //result
+      colorSnackbar.value = 'red'
+      message.value = 'Usunięto aplikacje'
+      emits('delete', true)
+      showSnackbar.value = true
+      closeDialog()
+    }
 }
 
 const closeDialog = () => { // Function to close the dialog
@@ -30,7 +54,7 @@ const closeDialog = () => { // Function to close the dialog
 <v-dialog v-model="dialog" max-width="500px">
     <template #activator="{isActive, props}">
         <v-btn
-        v-tooltop:bottom="'Usuń Aplikacje'"
+        v-tooltip:bottom="'Usuń Aplikacje'"
         v-bind="props"
         class="mt-1 mb-1 me-1 ms-1"
         color="red"
@@ -44,14 +68,14 @@ const closeDialog = () => { // Function to close the dialog
         </v-card-title>
         <v-card-text>
             <p>Czy napewno chcesz usunąć aplikacje: {{ props.name }}</p>
-            <v-checkbox v-model="agreed" label="Tak, chce usunąc aplikacje"></v-checkbox>
+            <v-checkbox v-model="agreed" label="Tak, chce usunąć aplikacje"></v-checkbox>
         </v-card-text>
         <v-card-actions>
             <v-spacer />
             <v-btn color="gray" @click="closeDialog">Zamknij</v-btn>
-            <v-btn color="red" :disabled="!agreed" @click="saveItem">Usuń</v-btn>
+            <v-btn color="red" :disabled="!agreed" @click="saveItems()">Usuń</v-btn>
         </v-card-actions>
     </v-card>
 </v-dialog>
-<Snackbar :color="colorSnackbar" :message="'Test'" :show="showSnackbar" @update:show="showSnackbar = $event" />
+<Snackbar :color="colorSnackbar" :message="message" :show="showSnackbar" @update:show="showSnackbar = $event" />
 </template>

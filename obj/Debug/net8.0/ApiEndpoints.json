@@ -42,6 +42,79 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "GlobalManagement.Controllers.ApplicationsController.ApplicationController",
+    "Method": "AddApplication",
+    "RelativePath": "application/create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Name",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Description",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Address",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GlobalManagement.Controllers.ApplicationsController.ApplicationController",
+    "Method": "RemoveApplication",
+    "RelativePath": "application/delete/{uuid}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "uuid",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GlobalManagement.Controllers.ApplicationsController.ApplicationController",
+    "Method": "EditApplication",
+    "RelativePath": "application/edit/{uuid}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "uuid",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "Address",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Description",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Name",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "GlobalManagement.Controllers.GroupsController.GroupController",
     "Method": "GetAllGroups",
     "RelativePath": "group/all",
@@ -49,6 +122,22 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GlobalManagement.Controllers.GroupsController.GroupController",
+    "Method": "ChangeGroupStatus",
+    "RelativePath": "group/change/{uuid}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "uuid",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {
@@ -83,6 +172,90 @@
         "Name": "Type",
         "Type": "System.String",
         "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GlobalManagement.Controllers.GroupsController.GroupController",
+    "Method": "DeleteGroup",
+    "RelativePath": "group/delete/{uuid}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "uuid",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GlobalManagement.Controllers.GroupsController.GroupController",
+    "Method": "EditGroup",
+    "RelativePath": "group/edit/{uuid}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "uuid",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "Name",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Description",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Hala",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Section",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GlobalManagement.Controllers.GroupsController.GroupController",
+    "Method": "ChangeRank",
+    "RelativePath": "group/member/rank/{uuid}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "uuid",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GlobalManagement.Controllers.GroupsController.GroupController",
+    "Method": "RemoveMember",
+    "RelativePath": "group/member/remove/{uuid}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "uuid",
+        "Type": "System.Guid",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
@@ -163,8 +336,241 @@
   },
   {
     "ContainingType": "GlobalManagement.Controllers.PermissionsController.PermissionController",
+    "Method": "GetAllPerms",
+    "RelativePath": "permission/all",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GlobalManagement.Controllers.PermissionsController.PermissionController",
+    "Method": "CreatePerms",
+    "RelativePath": "permission/create/control/{app}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "RoleName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "CanCreateReference",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      },
+      {
+        "Name": "CanDeleteReference",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      },
+      {
+        "Name": "CanUpdateReference",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      },
+      {
+        "Name": "CanReadReference",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      },
+      {
+        "Name": "CanCreateIntervention",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      },
+      {
+        "Name": "CanDeleteIntervention",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      },
+      {
+        "Name": "CanUpdateIntervention",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      },
+      {
+        "Name": "CanReadIntervention",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      },
+      {
+        "Name": "CanCreateTask",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      },
+      {
+        "Name": "CanDeleteTask",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      },
+      {
+        "Name": "CanUpdateTask",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      },
+      {
+        "Name": "CanReadTask",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      },
+      {
+        "Name": "CanCreateEcr",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      },
+      {
+        "Name": "CanDeleteEcr",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      },
+      {
+        "Name": "CanUpdateEcr",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      },
+      {
+        "Name": "CanReadEcr",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      },
+      {
+        "Name": "CanCreateDeviation",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      },
+      {
+        "Name": "CanDeleteDeviation",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      },
+      {
+        "Name": "CanUpdateDeviation",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      },
+      {
+        "Name": "CanReadDeviation",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      },
+      {
+        "Name": "app",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GlobalManagement.Controllers.PermissionsController.PermissionController",
+    "Method": "CreatePerms",
+    "RelativePath": "permission/create/global/{app}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "RoleName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "AppName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "AppUuid",
+        "Type": "System.Guid",
+        "IsRequired": false
+      },
+      {
+        "Name": "CanAccessGlobal",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      },
+      {
+        "Name": "CanBeEdited",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      },
+      {
+        "Name": "CreateUser",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      },
+      {
+        "Name": "UpdateUser",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      },
+      {
+        "Name": "DeleteUser",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      },
+      {
+        "Name": "CreateCustomRole",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      },
+      {
+        "Name": "UpdateCustomRole",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      },
+      {
+        "Name": "DeleteCustomRole",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      },
+      {
+        "Name": "CanCreateGroup",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      },
+      {
+        "Name": "CanDeleteGroup",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      },
+      {
+        "Name": "CanUpdateGroup",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      },
+      {
+        "Name": "app",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GlobalManagement.Controllers.PermissionsController.PermissionController",
+    "Method": "RemovePerms",
+    "RelativePath": "permission/delete/{uuid}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "uuid",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GlobalManagement.Controllers.PermissionsController.PermissionController",
     "Method": "GetAllRolesFromSpecificApp",
-    "RelativePath": "permission/gap",
+    "RelativePath": "permission/gap/{app}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -172,7 +578,23 @@
       {
         "Name": "app",
         "Type": "System.String",
-        "IsRequired": false
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GlobalManagement.Controllers.PermissionsController.PermissionController",
+    "Method": "GetUserPerms",
+    "RelativePath": "permission/user/{uuid}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "uuid",
+        "Type": "System.Guid",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
@@ -185,22 +607,6 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "GlobalManagement.Controllers.UsersController.UserController",
-    "Method": "CreateUser",
-    "RelativePath": "users",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "dto",
-        "Type": "GlobalManagement.Controllers.UsersController._dto.CreateUserdto",
-        "IsRequired": true
-      }
-    ],
     "ReturnTypes": []
   },
   {
@@ -230,6 +636,22 @@
       {
         "Name": "uuid",
         "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GlobalManagement.Controllers.UsersController.UserController",
+    "Method": "CreateUser",
+    "RelativePath": "users/create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "GlobalManagement.Controllers.UsersController._dto.CreateUserdto",
         "IsRequired": true
       }
     ],
@@ -281,9 +703,34 @@
         "IsRequired": true
       },
       {
-        "Name": "dto",
-        "Type": "GlobalManagement.Controllers.UsersController._dto.UpdateUserBasicdto",
-        "IsRequired": true
+        "Name": "UserName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "FirstName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "LastName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Email",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Card",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Pin",
+        "Type": "System.Int32",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -291,7 +738,7 @@
   {
     "ContainingType": "GlobalManagement.Controllers.UsersController.UserController",
     "Method": "ForceUpdateUserPassword",
-    "RelativePath": "users/force",
+    "RelativePath": "users/force/{uuid}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -299,7 +746,7 @@
       {
         "Name": "uuid",
         "Type": "System.Guid",
-        "IsRequired": false
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
