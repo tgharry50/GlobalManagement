@@ -20,5 +20,6 @@ export default createVuetify({
   locale: {
     locale: 'pl',
     messages: { pl },
+    fallback: 'en',
   },
 })

@@ -1,13 +1,21 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\mikip\\OneDrive\\Documents\\GitHub\\GlobalManagement\\",
+  "WorkspaceRootPath": "C:\\Users\\a0h70032\\source\\repos\\GlobalManagement\\GlobalManagement\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{378F1F9A-E907-4D33-96ED-4CF3A542C2DC}|GlobalManagement.csproj|c:\\users\\mikip\\onedrive\\documents\\github\\globalmanagement\\controllers\\permissionscontroller\\dto\\_getuserperms.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{378F1F9A-E907-4D33-96ED-4CF3A542C2DC}|GlobalManagement.csproj|c:\\users\\a0h70032\\source\\repos\\globalmanagement\\globalmanagement\\database\\globaldatabase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{378F1F9A-E907-4D33-96ED-4CF3A542C2DC}|GlobalManagement.csproj|solutionrelative:database\\globaldatabase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{378F1F9A-E907-4D33-96ED-4CF3A542C2DC}|GlobalManagement.csproj|c:\\users\\a0h70032\\source\\repos\\globalmanagement\\globalmanagement\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{378F1F9A-E907-4D33-96ED-4CF3A542C2DC}|GlobalManagement.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{378F1F9A-E907-4D33-96ED-4CF3A542C2DC}|GlobalManagement.csproj|c:\\users\\a0h70032\\source\\repos\\globalmanagement\\globalmanagement\\controllers\\permissionscontroller\\dto\\_getuserperms.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{378F1F9A-E907-4D33-96ED-4CF3A542C2DC}|GlobalManagement.csproj|solutionrelative:controllers\\permissionscontroller\\dto\\_getuserperms.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{378F1F9A-E907-4D33-96ED-4CF3A542C2DC}|GlobalManagement.csproj|c:\\users\\mikip\\onedrive\\documents\\github\\globalmanagement\\controllers\\permissionscontroller\\permissioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{378F1F9A-E907-4D33-96ED-4CF3A542C2DC}|GlobalManagement.csproj|c:\\users\\a0h70032\\source\\repos\\globalmanagement\\globalmanagement\\controllers\\permissionscontroller\\permissioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{378F1F9A-E907-4D33-96ED-4CF3A542C2DC}|GlobalManagement.csproj|solutionrelative:controllers\\permissionscontroller\\permissioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -18,33 +26,65 @@
       "DocumentGroups": [
         {
           "DockedWidth": 56,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "_GetUserPerms.cs",
-              "DocumentMoniker": "C:\\Users\\mikip\\OneDrive\\Documents\\GitHub\\GlobalManagement\\Controllers\\PermissionsController\\dto\\_GetUserPerms.cs",
-              "RelativeDocumentMoniker": "Controllers\\PermissionsController\\dto\\_GetUserPerms.cs",
-              "ToolTip": "C:\\Users\\mikip\\OneDrive\\Documents\\GitHub\\GlobalManagement\\Controllers\\PermissionsController\\dto\\_GetUserPerms.cs",
-              "RelativeToolTip": "Controllers\\PermissionsController\\dto\\_GetUserPerms.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAAAQwC8AAABIAAAAAAAAAA==",
+              "Title": "GlobalDatabase.cs",
+              "DocumentMoniker": "C:\\Users\\a0h70032\\source\\repos\\GlobalManagement\\GlobalManagement\\Database\\GlobalDatabase.cs",
+              "RelativeDocumentMoniker": "Database\\GlobalDatabase.cs",
+              "ToolTip": "C:\\Users\\a0h70032\\source\\repos\\GlobalManagement\\GlobalManagement\\Database\\GlobalDatabase.cs",
+              "RelativeToolTip": "Database\\GlobalDatabase.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-04T22:07:00.807Z",
+              "WhenOpened": "2025-01-21T08:53:21.593Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "PermissionController.cs",
-              "DocumentMoniker": "C:\\Users\\mikip\\OneDrive\\Documents\\GitHub\\GlobalManagement\\Controllers\\PermissionsController\\PermissionController.cs",
-              "RelativeDocumentMoniker": "Controllers\\PermissionsController\\PermissionController.cs",
-              "ToolTip": "C:\\Users\\mikip\\OneDrive\\Documents\\GitHub\\GlobalManagement\\Controllers\\PermissionsController\\PermissionController.cs",
-              "RelativeToolTip": "Controllers\\PermissionsController\\PermissionController.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAswBYAAAAZAAAAAAAAAA==",
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\a0h70032\\source\\repos\\GlobalManagement\\GlobalManagement\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\a0h70032\\source\\repos\\GlobalManagement\\GlobalManagement\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAADgAAAAAAAAAAAAAACkAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-04T20:25:15.353Z",
+              "WhenOpened": "2025-01-13T13:27:08.781Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "_GetUserPerms.cs",
+              "DocumentMoniker": "C:\\Users\\a0h70032\\source\\repos\\GlobalManagement\\GlobalManagement\\Controllers\\PermissionsController\\dto\\_GetUserPerms.cs",
+              "RelativeDocumentMoniker": "Controllers\\PermissionsController\\dto\\_GetUserPerms.cs",
+              "ToolTip": "C:\\Users\\a0h70032\\source\\repos\\GlobalManagement\\GlobalManagement\\Controllers\\PermissionsController\\dto\\_GetUserPerms.cs",
+              "RelativeToolTip": "Controllers\\PermissionsController\\dto\\_GetUserPerms.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAQwCUAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-04T22:07:00.807Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PermissionController.cs",
+              "DocumentMoniker": "C:\\Users\\a0h70032\\source\\repos\\GlobalManagement\\GlobalManagement\\Controllers\\PermissionsController\\PermissionController.cs",
+              "RelativeDocumentMoniker": "Controllers\\PermissionsController\\PermissionController.cs",
+              "ToolTip": "C:\\Users\\a0h70032\\source\\repos\\GlobalManagement\\GlobalManagement\\Controllers\\PermissionsController\\PermissionController.cs",
+              "RelativeToolTip": "Controllers\\PermissionsController\\PermissionController.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAUwBYAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-04T20:25:15.353Z"
             }
           ]
         }

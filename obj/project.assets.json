@@ -4522,23 +4522,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\mikip\\.nuget\\packages\\": {},
-    "E:\\New folder (2)\\sjared\\NuGetPackages": {}
+    "C:\\Users\\a0h70032\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\mikip\\OneDrive\\Documents\\GitHub\\GlobalManagement\\GlobalManagement.csproj",
+      "projectUniqueName": "C:\\Users\\a0h70032\\source\\repos\\GlobalManagement\\GlobalManagement\\GlobalManagement.csproj",
       "projectName": "GlobalManagement",
-      "projectPath": "C:\\Users\\mikip\\OneDrive\\Documents\\GitHub\\GlobalManagement\\GlobalManagement.csproj",
-      "packagesPath": "C:\\Users\\mikip\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\mikip\\OneDrive\\Documents\\GitHub\\GlobalManagement\\obj\\",
+      "projectPath": "C:\\Users\\a0h70032\\source\\repos\\GlobalManagement\\GlobalManagement\\GlobalManagement.csproj",
+      "packagesPath": "C:\\Users\\a0h70032\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\a0h70032\\source\\repos\\GlobalManagement\\GlobalManagement\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "E:\\New folder (2)\\sjared\\NuGetPackages"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\mikip\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\a0h70032\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -4547,6 +4547,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -4611,6 +4612,24 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[8.0.12, 8.0.12]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Host.win-x64",
+            "version": "[8.0.12, 8.0.12]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[8.0.12, 8.0.12]"
+          },
+          {
+            "name": "Microsoft.WindowsDesktop.App.Ref",
+            "version": "[8.0.12, 8.0.12]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -4619,7 +4638,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
